@@ -1,0 +1,328 @@
+{
+  "PreToolUse": [
+    {
+      "matcher": "sdd_init|sdd_create_branch",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-branch-validator.sh",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "sdd_discover|sdd_research|sdd_import_document|sdd_import_transcript|sdd_batch_import",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-artifact-validator.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-branch-validator.sh",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "sdd_write_spec|sdd_turnkey_spec|sdd_figma_to_spec",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-artifact-validator.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-branch-validator.sh",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "sdd_write_design|sdd_generate_all_diagrams",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-artifact-validator.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-branch-validator.sh",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "sdd_write_tasks|sdd_checklist",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-artifact-validator.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-branch-validator.sh",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "sdd_implement|sdd_generate_tests|sdd_generate_pbt",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-artifact-validator.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-branch-validator.sh",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "sdd_verify_tests|sdd_verify_tasks|sdd_check_sync",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-artifact-validator.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-branch-validator.sh",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "sdd_run_analysis|sdd_cross_analyze|sdd_compliance_check",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-artifact-validator.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-branch-validator.sh",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "sdd_create_pr|sdd_export_work_items",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-artifact-validator.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-branch-validator.sh",
+          "timeout": 5
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-security-scan.sh",
+          "timeout": 30
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-release-gate.sh",
+          "timeout": 15
+        }
+      ]
+    }
+  ],
+  "PostToolUse": [
+    {
+      "matcher": "sdd_init",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-phase-gate.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-auto-checkpoint.sh",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "sdd_write_spec|sdd_turnkey_spec|sdd_figma_to_spec",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-phase-gate.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-spec-quality.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-ears-validator.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-lgtm-gate.sh",
+          "timeout": 5
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-spec-sync.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-auto-checkpoint.sh",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "sdd_write_design|sdd_generate_all_diagrams",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-phase-gate.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-spec-sync.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-lgtm-gate.sh",
+          "timeout": 5
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-auto-checkpoint.sh",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "sdd_write_tasks|sdd_checklist",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-phase-gate.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-task-tracer.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-lgtm-gate.sh",
+          "timeout": 5
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-spec-sync.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-auto-checkpoint.sh",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "sdd_import_document|sdd_import_transcript|sdd_batch_import",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-auto-checkpoint.sh",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "sdd_implement|sdd_generate_tests|sdd_generate_pbt",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-spec-sync.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-auto-checkpoint.sh",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "sdd_verify_tests|sdd_verify_tasks",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-phase-gate.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-drift-monitor.sh",
+          "timeout": 10
+        }
+      ]
+    },
+    {
+      "matcher": "sdd_run_analysis|sdd_cross_analyze|sdd_compliance_check",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-phase-gate.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-cognitive-debt-alert.sh",
+          "timeout": 10
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-metrics-dashboard.sh",
+          "timeout": 5
+        },
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-drift-monitor.sh",
+          "timeout": 10
+        }
+      ]
+    }
+  ],
+  "Stop": [
+    {
+      "matcher": "",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .github/hooks/specky/scripts/specky-security-scan.sh",
+          "timeout": 30
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+/* Each cell lights up at its own delay, cycling over 5s */
+@keyframes lc-cell-on {
+  0%, 14%, 100% { background-color: #1e293b; border-color: #334155; color: #94a3b8; }
+  20%, 95%      { background-color: rgba(16, 185, 129, 0.2); border-color: #10b981; color: #10b981; box-shadow: 0 0 16px rgba(16,185,129,0.3); }
+}
+
+@keyframes lc-i-active {
+  0%, 14%, 100% { background-color: transparent; border-color: #334155; color: #94a3b8; }
+  20%, 95%      { background-color: rgba(79, 70, 229, 0.25); border-color: #4f46e5; color: #818cf8; }
+}
+
+.lc-cell--0 { animation: lc-cell-on 5s ease-in-out 0s    infinite; }
+.lc-cell--1 { animation: lc-cell-on 5s ease-in-out 0.9s  infinite; }
+.lc-cell--2 { animation: lc-cell-on 5s ease-in-out 1.8s  infinite; }
+.lc-cell--3 { animation: lc-cell-on 5s ease-in-out 2.7s  infinite; }
+.lc-cell--4 { animation: lc-cell-on 5s ease-in-out 3.6s  infinite; }
+
+.lc-i--0 { animation: lc-i-active 5s ease-in-out 0s    infinite; }
+.lc-i--1 { animation: lc-i-active 5s ease-in-out 0.9s  infinite; }
+.lc-i--2 { animation: lc-i-active 5s ease-in-out 1.8s  infinite; }
+.lc-i--3 { animation: lc-i-active 5s ease-in-out 2.7s  infinite; }
+.lc-i--4 { animation: lc-i-active 5s ease-in-out 3.6s  infinite; }

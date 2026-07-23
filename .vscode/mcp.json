@@ -1,0 +1,22 @@
+{
+  "servers": {
+    "specky": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "specky-sdd@3.12.0",
+        "serve"
+      ]
+    }
+  },
+  "mcpServers": {
+    "specky": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "specky-sdd@3.12.0",
+        "serve"
+      ]
+    }
+  }
+}

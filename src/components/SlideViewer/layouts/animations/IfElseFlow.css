@@ -1,0 +1,31 @@
+@keyframes ife-highlight {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 1; background-color: rgba(79, 70, 229, 0.15); border-radius: 4px; padding-left: 4px; }
+}
+
+@keyframes ife-pulse-cond {
+  0%, 100% { transform: scale(1); box-shadow: none; }
+  50%       { transform: scale(1.04); box-shadow: 0 0 20px rgba(234, 179, 8, 0.35); }
+}
+
+@keyframes ife-pulse-result {
+  0%, 100% { transform: scale(1); box-shadow: none; }
+  50%       { transform: scale(1.06); box-shadow: 0 0 24px rgba(16, 185, 129, 0.4); }
+}
+
+@keyframes ife-fade-arrow {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 1; }
+}
+
+.ife-line { transition: opacity 0.3s; }
+
+.ife-line--4 { animation: ife-highlight 3s ease-in-out 0.6s infinite; }
+.ife-line--5 { animation: ife-highlight 3s ease-in-out 1.2s infinite; }
+
+.ife-node--cond1 { animation: ife-pulse-cond 3s ease-in-out infinite; }
+.ife-node--cond2 { animation: ife-pulse-cond 3s ease-in-out 0.6s infinite; }
+.ife-node--result { animation: ife-pulse-result 3s ease-in-out 1.2s infinite; }
+
+.ife-arrow { animation: ife-fade-arrow 3s ease-in-out 0.3s infinite; }
+.ife-label { animation: ife-fade-arrow 3s ease-in-out 0.9s infinite; }

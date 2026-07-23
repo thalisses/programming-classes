@@ -1,0 +1,11 @@
+---
+description: Run SDD release phase
+agent: agent
+argument-hint: <feature-number>
+---
+Run the SDD release phase for feature [FEATURE NUMBER].
+
+**Branch:** [current spec/NNN-* branch]
+**Target:** develop (then stage → main after gates pass)
+
+@specky-release-engineer — verify branch, run blocking gates (specky-security-scan + specky-release-gate), generate documentation, create PR targeting the correct branch.
