@@ -2,6 +2,9 @@ import {
   FaHeading, FaAlignLeft, FaLink, FaImage, FaPlus, FaCheck, FaUpload,
   FaDownload, FaHashtag, FaArrowsRotate, FaKey, FaWandMagicSparkles, FaCommentDots,
   FaMagnifyingGlass, FaBug, FaMoneyBill, FaBolt, FaLock, FaPlay, FaCode,
+  FaHtml5, FaCss3Alt, FaJs, FaTerminal, FaGithub, FaGlobe, FaRobot,
+  FaPalette, FaFont, FaListUl, FaVideo, FaTableCells, FaLayerGroup,
+  FaRocket, FaCompass, FaCircleInfo, FaKeyboard, FaBrush,
 } from 'react-icons/fa6'
 import type { CardsContent } from '../../../types'
 
@@ -25,6 +28,25 @@ const ICON_MAP: Record<string, React.ReactNode> = {
   FaMoneyBill: <FaMoneyBill />,
   FaBolt: <FaBolt />,
   FaLock: <FaLock />,
+  FaCode: <FaCode />,
+  FaHtml5: <FaHtml5 />,
+  FaCss3Alt: <FaCss3Alt />,
+  FaJs: <FaJs />,
+  FaTerminal: <FaTerminal />,
+  FaGithub: <FaGithub />,
+  FaGlobe: <FaGlobe />,
+  FaRobot: <FaRobot />,
+  FaPalette: <FaPalette />,
+  FaFont: <FaFont />,
+  FaListUl: <FaListUl />,
+  FaVideo: <FaVideo />,
+  FaTableCells: <FaTableCells />,
+  FaLayerGroup: <FaLayerGroup />,
+  FaRocket: <FaRocket />,
+  FaCompass: <FaCompass />,
+  FaCircleInfo: <FaCircleInfo />,
+  FaKeyboard: <FaKeyboard />,
+  FaBrush: <FaBrush />,
 }
 
 interface CardsSlideProps {
@@ -36,8 +58,8 @@ export default function CardsSlide({ title, content }: CardsSlideProps) {
   return (
     <div className="w-full h-full flex flex-col bg-bg-base p-10 gap-6">
       <div>
-        <h2 className="font-heading font-bold text-text-primary text-3xl">{title}</h2>
-        <p className="text-accent-indigo font-semibold text-lg mt-1">{content.heading}</p>
+        <h2 className="font-heading font-bold text-text-primary text-4xl">{title}</h2>
+        <p className="text-accent-indigo font-semibold text-xl mt-1">{content.heading}</p>
       </div>
 
       <div className="flex-1 grid grid-cols-2 gap-5">
@@ -46,14 +68,14 @@ export default function CardsSlide({ title, content }: CardsSlideProps) {
             key={i}
             className="bg-bg-card border border-bg-card-alt rounded-2xl p-6 flex gap-4 items-start hover:border-accent-indigo/40 transition-colors"
           >
-            <div className="w-11 h-11 bg-accent-indigo/20 text-accent-indigo rounded-xl flex items-center justify-center text-xl shrink-0">
+            <div className="w-12 h-12 bg-accent-indigo/20 text-accent-indigo rounded-xl flex items-center justify-center text-2xl shrink-0">
               {ICON_MAP[item.icon] ?? <FaPlay />}
             </div>
             <div>
-              <h3 className="font-heading font-semibold text-text-primary text-lg mb-1">
+              <h3 className="font-heading font-semibold text-text-primary text-2xl mb-1">
                 {item.title}
               </h3>
-              <p className="text-text-muted text-sm leading-relaxed">{item.description}</p>
+              <p className="text-text-muted text-lg leading-relaxed">{item.description}</p>
             </div>
           </div>
         ))}

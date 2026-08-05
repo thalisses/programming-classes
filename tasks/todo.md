@@ -1,3 +1,86 @@
+# Tasks — Iteração 2: Enriquecimento de Conteúdo
+
+> Ordenadas por dependência. Cada tarefa tem critério de aceite e verificação.
+> Verificação padrão de fechamento: `npx tsc --noEmit` e `npm run lint` sem erros.
+
+---
+
+## FASE A — Tipos & Infra de Demos
+
+- [ ] **E2-01** — Estender `AnimatedDemoContent.animationType`
+  - Acceptance: union inclui `'html-tag-preview' | 'flexbox-playground' | 'grid-playground'`
+  - Verify: `npx tsc --noEmit` passa; tipos existentes intactos
+  - Files: `src/types/index.ts`
+
+- [ ] **E2-02** — Ligar novos tipos no `AnimatedDemoSlide`
+  - Acceptance: `switch`/condicionais renderizam os 3 novos componentes por `animationType`
+  - Verify: slide com cada novo tipo renderiza o componente correto (sem tela vazia)
+  - Files: `src/components/SlideViewer/layouts/AnimatedDemoSlide.tsx`
+
+## FASE B — Componentes de Demo Interativa
+
+- [ ] **E2-03** — `HtmlTagPreview` (código + render ao vivo)
+  - Acceptance: seletor de tags troca o exemplo; código e preview atualizam juntos
+  - Verify: clicar em ≥6 tags mostra HTML e render correspondentes; sem overflow
+  - Files: `src/components/SlideViewer/layouts/animations/HtmlTagPreview.tsx` (+ `.css` se preciso)
+
+- [ ] **E2-04** — `FlexboxPlayground` (controles interativos)
+  - Acceptance: alterar `justify-content`/`align-items`/`direction`/`wrap`/`gap` reposiciona caixas
+  - Verify: cada controle muda o layout ao vivo; CSS exibido reflete o estado
+  - Files: `src/components/SlideViewer/layouts/animations/FlexboxPlayground.tsx` (+ `.css`)
+
+- [ ] **E2-05** — `GridPlayground` (controles interativos)
+  - Acceptance: alterar colunas/gap/alinhamento re-desenha a grade
+  - Verify: colunas 1–4 e gap alteram a grade ao vivo; CSS exibido reflete o estado
+  - Files: `src/components/SlideViewer/layouts/animations/GridPlayground.tsx` (+ `.css`)
+
+## FASE C — Módulo de Introdução
+
+- [ ] **E2-06** — Criar `introducaoModule` (7 slides) e registrar como 1º do Dia 1
+  - Acceptance: `day: 1`, 7 slides (cover/two-column/cards/two-column/table/cards/checklist),
+    exercício leve; inserido primeiro no array `MODULES`
+  - Verify: Dashboard mostra 4 cards no Dia 1; `/#/dia/1/introducao/slides` abre 7 slides
+  - Files: `src/data/modules.ts`
+
+## FASE D — Enriquecimento de Módulos
+
+- [ ] **E2-07** — Expandir `dia-1/html` (→10 slides) + demo `html-tag-preview` + exercício
+  - Acceptance: mídia/semântica/formatação/tabelas/forms; 1 slide `html-tag-preview`
+  - Verify: 10 slides; conteúdo atualizado (`viewport`, `loading="lazy"`); `tsc` ok
+  - Files: `src/data/modules.ts`
+
+- [ ] **E2-08** — Expandir `dia-1/css` (→11 slides) + demos `flexbox-playground` e `grid-playground`
+  - Acceptance: cores/fontes/background/box model/unidades; 2 slides de demo interativa
+  - Verify: 11 slides; Froggy/Garden mantidos; `tsc` ok
+  - Files: `src/data/modules.ts`
+
+- [ ] **E2-09** — Polir `dia-1/terminal` (→6 slides)
+  - Acceptance: `code .` e boas práticas adicionados
+  - Verify: 6 slides; `tsc` ok
+  - Files: `src/data/modules.ts`
+
+- [ ] **E2-10** — Enriquecer JS Dia 2 (variáveis →9, condicionais →8, loops →8)
+  - Acceptance: variáveis com `alert/prompt/confirm`; demos existentes mantidas
+  - Verify: contagens batem; `tsc` ok
+  - Files: `src/data/modules.ts`
+
+- [ ] **E2-11** — Atualizar Dia 3 (github/codespaces-ia/github-pages, →6 cada)
+  - Acceptance: branch `main`, `git switch/restore`, nomenclatura atual Copilot/Codespaces
+  - Verify: contagens batem; conteúdo sem termos legados (`master`); `tsc` ok
+  - Files: `src/data/modules.ts`
+
+## FASE E — Verificação & Polimento
+
+- [ ] **E2-12** — Verificação final (SC-16 a SC-23)
+  - Acceptance: `tsc` + `lint` limpos; demos sem overflow; build/preview ok
+  - Verify: revisão visual de cada demo e módulo em `npm run dev`; `npm run build`
+  - Files: — (validação)
+
+---
+---
+
+# HISTÓRICO — Iteração 1 (Build Original, concluída)
+
 # Tasks — Plataforma Educacional (React + TypeScript)
 
 > Ordenadas por dependência. Não pule tarefas — cada uma tem verificação.

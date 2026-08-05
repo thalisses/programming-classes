@@ -1,3 +1,139 @@
+# Plano Técnico — Iteração 2: Enriquecimento de Conteúdo
+
+> Gerado após atualização do spec em `tasks/spec.md` (seção "Escopo — Iteração 2").
+> A plataforma base (Iteração 1) já está construída e funcional — ver histórico ao final.
+> Esta iteração **aprofunda o conteúdo** e adiciona **demos interativas**.
+
+---
+
+## Visão Geral
+
+Dividido em **5 fases sequenciais**. Cada fase entrega algo verificável
+(`npx tsc --noEmit` + `npm run lint` limpos) antes de avançar.
+
+```
+FASE A: Tipos & Infra de Demos Interativas
+  └── Novos animationType no type system + wiring no AnimatedDemoSlide
+
+FASE B: Componentes de Demo Interativa
+  └── HtmlTagPreview, FlexboxPlayground, GridPlayground (React + estado local)
+
+FASE C: Novo Módulo de Introdução (Dia 1)
+  └── dia-1/introducao com 7 slides + card no Dashboard
+
+FASE D: Enriquecimento dos Módulos Existentes
+  └── HTML, CSS, Terminal, JS (×3), Dia 3 (×3) — slides + exercícios + correções
+
+FASE E: Verificação & Polimento
+  └── Overflow dos slides, responsividade, tsc/lint, revisão de conteúdo desatualizado
+```
+
+**Ordem obrigatória:** A → B → C → D → E. B depende de A (tipos). C e D usam as demos de B.
+E é a validação final.
+
+---
+
+## Fase A — Tipos & Infra de Demos Interativas
+
+**Objetivo:** o sistema de tipos aceita os 3 novos tipos de demo sem quebrar o build.
+
+- `src/types/index.ts` — estender `AnimatedDemoContent.animationType` com
+  `'html-tag-preview' | 'flexbox-playground' | 'grid-playground'`.
+- `src/components/SlideViewer/layouts/AnimatedDemoSlide.tsx` — adicionar os 3 novos ramos
+  de renderização (imports + condicionais por `animationType`).
+
+**Verificação:** `npx tsc --noEmit` passa; usos existentes intactos.
+
+---
+
+## Fase B — Componentes de Demo Interativa
+
+**Objetivo:** 3 componentes React autônomos, com estado local e controles, cabendo em 1280×720.
+Vivem em `src/components/SlideViewer/layouts/animations/` (padrão existente).
+
+### B1. `HtmlTagPreview.tsx`
+- Lista interna de exemplos `{ label, code }` para títulos, texto/formatação, listas, link,
+  imagem, tabela, formulário e tags semânticas.
+- Estado `selectedIndex`; abas/botões trocam a tag ativa.
+- Painel esquerdo = código (`react-syntax-highlighter`, `language="html"`);
+  painel direito = render ao vivo.
+- **Segurança:** HTML é estático e definido pelo autor (nunca da URL/usuário). Preferir JSX;
+  se usar `dangerouslySetInnerHTML`, apenas com strings literais constantes deste arquivo.
+
+### B2. `FlexboxPlayground.tsx`
+- Estado: `flexDirection`, `justifyContent`, `alignItems`, `flexWrap`, `gap`.
+- Controles segmentados por propriedade + gap; 4–5 caixas coloridas numeradas via `style`.
+- Exibir o CSS resultante em bloco pequeno, atualizado em tempo real.
+
+### B3. `GridPlayground.tsx`
+- Estado: `columns` (1–4), `gap`, `justifyItems`, `alignItems`.
+- Controles para colunas/gap/alinhamento; itens numerados,
+  `grid-template-columns: repeat(N, 1fr)`.
+- Exibir o CSS resultante atualizado em tempo real.
+
+**Risco:** demos estourarem 720px após scale.
+**Mitigação:** `min-h-0`, `overflow: hidden` no wrapper, tamanhos moderados em `rem`.
+
+**Verificação:** cada demo renderiza isolada; interações alteram o resultado; sem overflow.
+
+---
+
+## Fase C — Novo Módulo de Introdução (Dia 1)
+
+**Objetivo:** `dia-1/introducao` como 1º card do Dia 1, com 7 slides.
+
+- `src/data/modules.ts` — criar `introducaoModule` (`day: 1`) e inseri-lo **primeiro** no array
+  `MODULES` (a ordem no array define a ordem dos cards do dia).
+- Slides: cover, two-column, cards, two-column, table, cards, checklist (ver spec).
+- Exercício leve embutido (abrir DevTools, criar pasta `curso-dev`).
+
+**Sem mudança de roteamento** (rotas genéricas `/dia/:day/:moduleSlug`).
+
+**Verificação:** Dashboard mostra 4 cards no Dia 1; `/#/dia/1/introducao/slides` abre 7 slides.
+
+---
+
+## Fase D — Enriquecimento dos Módulos Existentes
+
+Fonte de apoio: PDFs em `html-css-aulas/aulas-pdf/` e `javascript-aulas/aulas-pdf/`.
+
+- **D1 `dia-1/html` (→10):** formatação de texto, mídia (`loading="lazy"`, `picture/audio/video`,
+  favicon), tabelas, forms, semântica HTML5 + demo `html-tag-preview`. Ampliar exercício.
+- **D2 `dia-1/css` (→11):** cores, fontes (Google Fonts), background, box model, `:focus-visible`,
+  unidades (`rem`/`clamp()`) + demos `flexbox-playground` e `grid-playground`. Manter Froggy/Garden.
+- **D3 `dia-1/terminal` (→6):** polir; `code .`; boas práticas.
+- **D4 `dia-2/javascript-*`:** variáveis (→9, +`alert/prompt/confirm`), condicionais (→8),
+  loops (→8). Manter `if-else-flow` e `loop-counter`.
+- **D5 `dia-3/*` (→6 cada):** branch `main`, `git switch/restore`; nomenclatura atual
+  Copilot/Codespaces; polir Pages.
+
+**Verificação por módulo:** `tsc` valida contra `Module`; contagem de slides bate; nenhum `any`.
+
+---
+
+## Fase E — Verificação & Polimento
+
+- `npx tsc --noEmit` e `npm run lint` sem erros/warnings.
+- `npm run dev` — revisão visual de cada demo e módulo.
+- Overflow dos slides (1280×720, `overflow: hidden`) em todas as demos.
+- Responsividade do Dashboard e do visualizador.
+- Checklist de conteúdo desatualizado (SC-23).
+- `npm run build` + `npm run preview` funcionais.
+
+---
+
+## Paralelização
+
+- **B1, B2, B3** independentes entre si (após A).
+- **D1–D5** independentes entre si (após B e C).
+- **C** independente de D.
+- Sequencial: A antes de B; B e C antes de D; E por último.
+
+---
+---
+
+# HISTÓRICO — Iteração 1 (Build Original, concluída)
+
 # Plano Técnico — Plataforma Educacional (React + TypeScript)
 
 > Gerado após aprovação do spec em `tasks/spec.md`.

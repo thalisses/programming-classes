@@ -78,7 +78,7 @@ export default function ModulePage() {
             className="flex items-center gap-2 px-6 py-3 bg-accent-indigo hover:bg-indigo-500 text-white font-semibold rounded-xl transition-colors"
           >
             <FaPlay />
-            Ver Slides Interativos
+            Ver Slides
           </Link>
         </div>
 

@@ -8,8 +8,9 @@ export interface CoverContent {
 export interface TwoColumnContent {
   heading: string
   text: string[]
-  code: string
-  codeLanguage: string
+  code?: string
+  codeLanguage?: string
+  image?: { src: string; alt: string }
 }
 
 export interface CardsContent {
@@ -30,7 +31,12 @@ export interface ChecklistContent {
 
 export interface AnimatedDemoContent {
   heading: string
-  animationType: 'if-else-flow' | 'loop-counter'
+  animationType:
+    | 'if-else-flow'
+    | 'loop-counter'
+    | 'html-tag-preview'
+    | 'flexbox-playground'
+    | 'grid-playground'
   description: string
 }
 

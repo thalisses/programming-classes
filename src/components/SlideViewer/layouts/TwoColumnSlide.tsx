@@ -20,8 +20,8 @@ export default function TwoColumnSlide({ title, content }: TwoColumnSlideProps) 
   return (
     <div className="w-full h-full flex flex-col bg-bg-base p-10 gap-6">
       <div>
-        <h2 className="font-heading font-bold text-text-primary text-3xl">{title}</h2>
-        <p className="text-accent-indigo font-semibold text-lg mt-1">{content.heading}</p>
+        <h2 className="font-heading font-bold text-text-primary text-4xl">{title}</h2>
+        <p className="text-accent-indigo font-semibold text-xl mt-1">{content.heading}</p>
       </div>
 
       <div className="flex-1 grid grid-cols-2 gap-6 min-h-0">
@@ -29,30 +29,40 @@ export default function TwoColumnSlide({ title, content }: TwoColumnSlideProps) 
         <div className="flex flex-col justify-center gap-3">
           {content.text.map((line, i) => (
             <div key={i} className="flex gap-3 items-start">
-              <span className="mt-1.5 w-2 h-2 rounded-full bg-accent-indigo shrink-0" />
-              <p className="text-text-primary text-base leading-relaxed">{line}</p>
+              <span className="mt-2 w-2.5 h-2.5 rounded-full bg-accent-indigo shrink-0" />
+              <p className="text-text-primary text-xl leading-relaxed">{line}</p>
             </div>
           ))}
         </div>
 
-        {/* Right: code */}
-        <div className="rounded-xl overflow-hidden text-sm min-h-0">
-          <SyntaxHighlighter
-            language={content.codeLanguage}
-            style={atomOneDark}
-            customStyle={{
-              height: '100%',
-              margin: 0,
-              borderRadius: '12px',
-              fontSize: '13px',
-              lineHeight: '1.6',
-              padding: '20px',
-            }}
-            showLineNumbers
-          >
-            {content.code}
-          </SyntaxHighlighter>
-        </div>
+        {/* Right: code or illustration */}
+        {content.image ? (
+          <div className="flex items-center justify-center rounded-xl bg-bg-card border border-bg-card-alt p-6 min-h-0">
+            <img
+              src={content.image.src}
+              alt={content.image.alt}
+              className="max-h-full max-w-full object-contain"
+            />
+          </div>
+        ) : (
+          <div className="rounded-xl overflow-hidden text-base min-h-0">
+            <SyntaxHighlighter
+              language={content.codeLanguage}
+              style={atomOneDark}
+              customStyle={{
+                height: '100%',
+                margin: 0,
+                borderRadius: '12px',
+                fontSize: '15px',
+                lineHeight: '1.6',
+                padding: '20px',
+              }}
+              showLineNumbers
+            >
+              {content.code ?? ''}
+            </SyntaxHighlighter>
+          </div>
+        )}
       </div>
     </div>
   )

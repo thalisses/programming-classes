@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import {
   FaHtml5, FaCss3Alt, FaTerminal, FaJs, FaGithub, FaGlobe, FaRobot,
-  FaCodeBranch, FaArrowsRotate, FaCheck, FaPlay, FaCircleCheck,
+  FaCodeBranch, FaArrowsRotate, FaCheck, FaPlay, FaCircleCheck, FaGraduationCap,
 } from 'react-icons/fa6'
 import type { Module } from '../../types'
 
@@ -15,6 +15,7 @@ const ICON_MAP: Record<string, React.ReactNode> = {
   FaRobot: <FaRobot />,
   FaCodeBranch: <FaCodeBranch />,
   FaArrowsRotate: <FaArrowsRotate />,
+  FaGraduationCap: <FaGraduationCap />,
 }
 
 const DAY_COLORS: Record<number, string> = {

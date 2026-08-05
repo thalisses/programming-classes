@@ -2,6 +2,161 @@ import type { Module } from '../types'
 
 // ─── DIA 1 ───────────────────────────────────────────────────────────────────
 
+const introducaoModule: Module = {
+  id: 'dia-1/introducao',
+  day: 1,
+  title: 'Boas-vindas — O que é o Desenvolvimento Web',
+  summary: 'Visão geral rápida (~15 min) de HTML, CSS e JavaScript antes de colocar a mão no código.',
+  tags: ['Introdução', 'Web', 'Visão Geral'],
+  icon: 'FaGraduationCap',
+  topics: [
+    'Como a web funciona: navegador, servidor e a página',
+    'A tríade: HTML (conteúdo), CSS (estilo) e JavaScript (interatividade)',
+    'A mesma página evoluindo com cada tecnologia',
+    'Roteiro dos 3 dias do curso',
+    'Ferramentas que vamos usar: navegador, VS Code, DevTools e terminal',
+  ],
+  exercises: [
+    {
+      label: 'Aquecimento: abrir as DevTools e preparar o ambiente',
+      steps: [
+        'Abra qualquer site no navegador e pressione <code>F12</code> (ou clique com o botão direito → "Inspecionar")',
+        'Na aba <strong>Elements</strong>, passe o mouse sobre o código e veja partes da página acendendo',
+        'Mude um texto qualquer direto no inspetor e veja a página atualizar na hora',
+        'Crie uma pasta chamada <code>curso-dev</code> no seu computador para guardar os projetos da semana',
+        'Abra essa pasta no <strong>VS Code</strong> (Arquivo → Abrir Pasta)',
+      ],
+    },
+  ],
+  slides: [
+    {
+      id: 1,
+      layout: 'cover',
+      title: 'Bem-vindo ao Desenvolvimento Web',
+      content: {
+        badge: 'DIA 1 · INTRODUÇÃO',
+        subtitle: 'Uma visão geral rápida antes de começarmos a programar de verdade.',
+      },
+    },
+    {
+      id: 2,
+      layout: 'two-column',
+      title: 'Como a Web Funciona',
+      content: {
+        heading: 'Do clique até a página aparecer',
+        text: [
+          'Você digita um endereço ou clica em um link no navegador',
+          'O navegador pede os arquivos a um servidor pela internet',
+          'O servidor responde com HTML, CSS e JavaScript',
+          'O navegador lê esses arquivos e desenha a página na tela',
+        ],
+        image: {
+          src:
+            "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 340' width='520' height='340' font-family='sans-serif'><rect x='20' y='70' width='190' height='200' rx='14' fill='%231e293b' stroke='%234f46e5' stroke-width='2'/><rect x='20' y='70' width='190' height='34' rx='14' fill='%23334155'/><circle cx='42' cy='87' r='5' fill='%23ef4444'/><circle cx='60' cy='87' r='5' fill='%23f59e0b'/><circle cx='78' cy='87' r='5' fill='%2310b981'/><text x='115' y='160' fill='%23f1f5f9' font-size='19' text-anchor='middle' font-weight='bold'>Navegador</text><text x='115' y='186' fill='%2394a3b8' font-size='13' text-anchor='middle'>seu computador</text><rect x='310' y='70' width='190' height='200' rx='14' fill='%231e293b' stroke='%2310b981' stroke-width='2'/><rect x='330' y='96' width='150' height='28' rx='6' fill='%23334155'/><rect x='330' y='132' width='150' height='28' rx='6' fill='%23334155'/><circle cx='348' cy='110' r='4' fill='%2310b981'/><circle cx='348' cy='146' r='4' fill='%2310b981'/><text x='405' y='212' fill='%23f1f5f9' font-size='19' text-anchor='middle' font-weight='bold'>Servidor</text><text x='405' y='238' fill='%2394a3b8' font-size='13' text-anchor='middle'>na internet</text><text x='260' y='118' fill='%2394a3b8' font-size='13' text-anchor='middle'>1. pedido</text><line x1='215' y1='134' x2='303' y2='134' stroke='%234f46e5' stroke-width='3'/><polygon points='305,134 292,128 292,140' fill='%234f46e5'/><text x='260' y='292' fill='%2394a3b8' font-size='12' text-anchor='middle'>2. HTML + CSS + JS</text><line x1='305' y1='222' x2='217' y2='222' stroke='%2310b981' stroke-width='3'/><polygon points='215,222 228,216 228,228' fill='%2310b981'/></svg>",
+          alt: 'Diagrama: o navegador envia um pedido ao servidor e recebe HTML, CSS e JavaScript de volta',
+        },
+      },
+    },
+    {
+      id: 3,
+      layout: 'cards',
+      title: 'As Três Linguagens da Web',
+      content: {
+        heading: 'Cada uma tem um papel bem definido',
+        items: [
+          {
+            icon: 'FaHtml5',
+            title: 'HTML — Conteúdo',
+            description: 'A estrutura da página: textos, imagens, links, listas e botões. É o "esqueleto".',
+          },
+          {
+            icon: 'FaCss3Alt',
+            title: 'CSS — Estilo',
+            description: 'A aparência: cores, fontes, espaçamentos e o layout. É a "roupa" da página.',
+          },
+          {
+            icon: 'FaJs',
+            title: 'JavaScript — Interatividade',
+            description: 'O comportamento: reagir a cliques, validar formulários e atualizar a tela. É o "movimento".',
+          },
+          {
+            icon: 'FaCompass',
+            title: 'Trabalham juntos',
+            description: 'Toda página que você usa combina as três. Nesta semana vamos aprender uma de cada vez.',
+          },
+        ],
+      },
+    },
+    {
+      id: 4,
+      layout: 'two-column',
+      title: 'A Mesma Página, Camada por Camada',
+      content: {
+        heading: 'Uma analogia com uma casa',
+        text: [
+          'Só HTML: paredes cruas, tudo empilhado e sem cor',
+          '+ CSS: pintura, móveis e organização dos ambientes',
+          '+ JS: interruptores, portas que abrem e campainha',
+          'Juntando as três, temos um site completo e vivo',
+        ],
+        code: `<!-- Só HTML -->
+<button>Curtir</button>
+
+/* + CSS */
+button { background: #4f46e5; color: #fff; }
+
+// + JavaScript
+button.onclick = () => alert('Obrigado!')`,
+        codeLanguage: 'html',
+      },
+    },
+    {
+      id: 5,
+      layout: 'table',
+      title: 'Nosso Roteiro da Semana',
+      content: {
+        heading: 'O que vamos construir em cada dia',
+        headers: ['Dia', 'Tema', 'O que você vai saber fazer'],
+        rows: [
+          ['Dia 1', 'HTML + CSS', 'Estruturar e estilizar uma página com Flexbox e Grid'],
+          ['Dia 2', 'JavaScript', 'Usar variáveis, condições e repetições para dar interatividade'],
+          ['Dia 3', 'Git & Deploy', 'Versionar com Git/GitHub e publicar o site no ar'],
+        ],
+      },
+    },
+    {
+      id: 6,
+      layout: 'cards',
+      title: 'Ferramentas que Vamos Usar',
+      content: {
+        heading: 'Tudo gratuito e já no seu computador',
+        items: [
+          {
+            icon: 'FaGlobe',
+            title: 'Navegador',
+            description: 'Chrome, Edge ou Firefox. É onde a página realmente aparece.',
+          },
+          {
+            icon: 'FaCode',
+            title: 'VS Code',
+            description: 'O editor onde vamos escrever o código dos projetos.',
+          },
+          {
+            icon: 'FaSearch',
+            title: 'DevTools (F12)',
+            description: 'As ferramentas do navegador para inspecionar e depurar a página.',
+          },
+          {
+            icon: 'FaTerminal',
+            title: 'Terminal',
+            description: 'Uma linha de comando para navegar em pastas e usar o Git no Dia 3.',
+          },
+        ],
+      },
+    },
+  ],
+}
+
 const htmlModule: Module = {
   id: 'dia-1/html',
   day: 1,
@@ -11,9 +166,12 @@ const htmlModule: Module = {
   icon: 'FaHtml5',
   topics: [
     'O que é HTML e para que serve',
-    'Estrutura: <!DOCTYPE html>, <html>, <head>, <body>',
+    'Estrutura moderna: <!DOCTYPE html>, lang, <meta charset> e viewport',
     'Tags essenciais: títulos, parágrafos, links e imagens',
-    'Listas ordenadas e não-ordenadas',
+    'Formatação de texto, listas ordenadas e não-ordenadas',
+    'Imagens otimizadas com alt e loading="lazy"',
+    'Tabelas e formulários (input, label, button)',
+    'Tags semânticas do HTML5: header, main, nav, footer',
     'Elementos de bloco vs. inline: <div> e <span>',
     'Hello World: criar o primeiro index.html',
   ],
@@ -46,17 +204,19 @@ const htmlModule: Module = {
       layout: 'two-column',
       title: 'Estrutura de um Documento HTML',
       content: {
-        heading: 'Todo site começa com essa estrutura',
+        heading: 'Todo site moderno começa com essa estrutura',
         text: [
-          '<!DOCTYPE html> informa ao browser a versão do HTML',
-          '<html> é o elemento raiz que envolve tudo',
-          '<head> contém metadados: título, fontes, SEO',
-          '<body> contém tudo que o usuário VÊ na tela',
+          '<!DOCTYPE html> informa ao navegador que o documento usa HTML5',
+          '<head> é a área de configuração invisível: título da aba, metadados, links de CSS e scripts',
+          '<meta charset="UTF-8"> e lang="pt-BR" garantem acentuação correta, acessibilidade e melhor SEO',
+          '<body> é a área visível da página: textos, imagens, botões e tudo que o usuário realmente interage',
         ],
         code: `<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
     <title>Meu Site</title>
   </head>
   <body>
@@ -99,6 +259,46 @@ const htmlModule: Module = {
     },
     {
       id: 4,
+      layout: 'animated-demo',
+      title: 'Galeria de Tags — Código e Resultado',
+      content: {
+        heading: 'Escolha uma tag e veja o navegador renderizar',
+        animationType: 'html-tag-preview',
+        description: 'À esquerda o código HTML, à direita o resultado real. Troque entre títulos, texto, listas, imagem, tabela, formulário e tags semânticas.',
+      },
+    },
+    {
+      id: 5,
+      layout: 'cards',
+      title: 'Mídia, Formatação e Semântica',
+      content: {
+        heading: 'Além do texto: enriqueça a página',
+        items: [
+          {
+            icon: 'FaImage',
+            title: 'Imagens otimizadas',
+            description: 'Use alt para acessibilidade e loading="lazy" para carregar só quando aparecer.',
+          },
+          {
+            icon: 'FaAlignLeft',
+            title: 'Formatação de texto',
+            description: '<strong> para importância, <em> para ênfase e <mark> para destaque.',
+          },
+          {
+            icon: 'FaListUl',
+            title: 'Listas',
+            description: '<ul> para itens sem ordem e <ol> para passos numerados.',
+          },
+          {
+            icon: 'FaLayerGroup',
+            title: 'Tags semânticas',
+            description: '<header>, <nav>, <main> e <footer> dão significado à estrutura.',
+          },
+        ],
+      },
+    },
+    {
+      id: 6,
       layout: 'table',
       title: 'Elementos de Bloco vs. Inline',
       content: {
@@ -113,19 +313,45 @@ const htmlModule: Module = {
       },
     },
     {
-      id: 5,
+      id: 7,
+      layout: 'two-column',
+      title: 'Formulários — Capturando Dados',
+      content: {
+        heading: 'O básico de um formulário acessível',
+        text: [
+          'Todo <input> deve ter um <label> associado pelo id',
+          'O atributo type muda o teclado e a validação (email, number...)',
+          'placeholder é apenas uma dica, não substitui o label',
+          '<button type="submit"> envia o formulário',
+        ],
+        code: `<form>
+  <label for="email">E-mail</label>
+  <input id="email" type="email"
+         placeholder="voce@email.com" required />
+
+  <label for="msg">Mensagem</label>
+  <textarea id="msg" rows="3"></textarea>
+
+  <button type="submit">Enviar</button>
+</form>`,
+        codeLanguage: 'html',
+      },
+    },
+    {
+      id: 8,
       layout: 'checklist',
       title: 'Missão HTML — O que fazer agora',
       content: {
         heading: 'Exercício prático: seu primeiro site',
         items: [
           'Criar pasta meu-site e o arquivo index.html',
-          'Adicionar a estrutura base: DOCTYPE, html, head, body',
+          'Adicionar a estrutura base com <meta viewport>',
           'Inserir um <h1> com seu nome completo',
           'Adicionar um <p> com uma breve apresentação',
-          'Incluir uma imagem com <img src="" alt="">',
+          'Incluir uma imagem com <img src="" alt="" loading="lazy">',
           'Criar uma lista <ul> com 3 hobbies ou interesses',
-          'Adicionar um link <a href=""> para um site favorito',
+          'Organizar a página com <header>, <main> e <footer>',
+          'Adicionar um pequeno formulário de contato',
           'Abrir o arquivo no browser e ver o resultado',
         ],
       },
@@ -143,10 +369,10 @@ const cssModule: Module = {
   topics: [
     'Seletores: tag, .classe, #id e pseudo-classes',
     'Box Model: margin, padding, border, width e height',
-    'Flexbox: display flex, justify-content, align-items',
-    'CSS Grid: display grid, grid-template-columns, gap',
-    'Cores, fontes e unidades (px, %, rem, vh)',
-    'Estados: :hover, :focus, :active',
+    'Flexbox interativo: justify-content, align-items, gap e wrap',
+    'CSS Grid interativo: grid-template-columns e gap',
+    'Cores, fontes e unidades modernas (rem, %, vh, clamp())',
+    'Estados acessíveis: :hover, :focus-visible, :active',
   ],
   exercises: [
     {
@@ -218,29 +444,38 @@ h1 { color: #4f46e5; }
       layout: 'two-column',
       title: 'Flexbox — Layout em Uma Dimensão',
       content: {
-        heading: 'Alinhamento horizontal e vertical com facilidade',
+        heading: 'Organize itens em linha ou coluna com total controle',
         text: [
-          'display: flex transforma o elemento em container flex',
-          'justify-content controla o eixo principal (horizontal)',
-          'align-items controla o eixo cruzado (vertical)',
-          'gap define espaço entre os filhos',
+          'display: flex — ativa o Flexbox no elemento pai; os filhos diretos viram "itens flex"',
+          'flex-direction — define a direção: row (→ horizontal, padrão) ou column (↓ vertical)',
+          'justify-content — distribui os itens no eixo principal: flex-start, center, flex-end, space-between…',
+          'align-items — alinha os itens no eixo cruzado: stretch (padrão, ocupa toda a altura), center, flex-start…',
+          'flex-wrap: wrap — permite que os itens quebrem para a próxima linha quando não há espaço',
+          'gap — espaço entre os itens, sem precisar de margin em cada filho',
         ],
         code: `.container {
-  display: flex;
-  justify-content: center;   /* centraliza horizontal */
-  align-items: center;       /* centraliza vertical   */
-  gap: 16px;                 /* espaço entre filhos  */
-  flex-wrap: wrap;           /* quebra linha se precisar */
-}
-
-/* Valores de justify-content:
-   flex-start | center | flex-end
-   space-between | space-around | space-evenly */`,
+  display: flex;            /* ativa o Flexbox       */
+  flex-direction: row;      /* → direção horizontal  */
+  justify-content: flex-start; /* itens no início    */
+  align-items: stretch;     /* ocupa toda a altura   */
+  flex-wrap: nowrap;        /* sem quebra de linha   */
+  gap: 16px;                /* 16px entre os itens   */
+}`,
         codeLanguage: 'css',
       },
     },
     {
       id: 4,
+      layout: 'animated-demo',
+      title: 'Flexbox na Prática — Playground',
+      content: {
+        heading: 'Mexa nos controles e veja as caixas se moverem',
+        animationType: 'flexbox-playground',
+        description: 'Altere flex-direction, justify-content, align-items, wrap e gap. O CSS gerado aparece embaixo em tempo real.',
+      },
+    },
+    {
+      id: 5,
       layout: 'table',
       title: 'Flexbox vs. CSS Grid',
       content: {
@@ -257,7 +492,79 @@ h1 { color: #4f46e5; }
       },
     },
     {
-      id: 5,
+      id: 6,
+      layout: 'two-column',
+      title: 'CSS Grid — Layout em Duas Dimensões',
+      content: {
+        heading: 'Linhas e colunas ao mesmo tempo — ideal para layouts de página',
+        text: [
+          'display: grid — ativa o Grid no elemento pai; os filhos se posicionam nas células automaticamente',
+          'grid-template-columns — define o número e o tamanho das colunas: repeat(3, 1fr) cria 3 colunas iguais',
+          'fr (fraction) — unidade proporcional que divide o espaço disponível: 1fr 2fr dá 1/3 e 2/3',
+          'gap — espaço entre linhas e colunas ao mesmo tempo, sem margin nos filhos',
+          'auto-fit + minmax() — cria colunas responsivas sem media query: os itens se ajustam ao tamanho da tela',
+        ],
+        code: `.galeria {
+  display: grid;               /* ativa o Grid          */
+  grid-template-columns:
+    repeat(3, 1fr);            /* 3 colunas iguais      */
+  gap: 16px;                   /* espaço entre células  */
+}
+
+/* Responsivo sem media query: */
+.galeria-auto {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  /* cada coluna tem no mínimo 200px
+     e cresce para preencher o espaço */
+}`,
+        codeLanguage: 'css',
+      },
+    },
+    {
+      id: 7,
+      layout: 'animated-demo',
+      title: 'CSS Grid na Prática — Playground',
+      content: {
+        heading: 'Controle colunas, espaçamento e número de itens',
+        animationType: 'grid-playground',
+        description: 'Ajuste o número de colunas, o gap e a quantidade de itens para ver como o Grid reorganiza tudo automaticamente.',
+      },
+    },
+    {
+      id: 8,
+      layout: 'cards',
+      title: 'Cores, Fontes e CSS Moderno',
+      content: {
+        heading: 'Toques que deixam o site profissional',
+        items: [
+          {
+            icon: 'FaPalette',
+            title: 'Cores',
+            description: 'Use hex (#4f46e5), rgb() ou a moderna oklch() para cores vivas e consistentes.',
+          },
+          {
+            icon: 'FaFont',
+            title: 'Fontes e rem',
+            description: 'Prefira rem para tamanhos que respeitam a preferência do usuário. Importe fontes do Google Fonts.',
+          },
+          {
+            icon: 'FaBrush',
+            title: 'clamp() responsivo',
+            description: 'font-size: clamp(1rem, 2vw, 2rem) cresce com a tela sem media query.',
+          },
+          {
+            icon: 'FaKey',
+            title: ':focus-visible',
+            description: 'Mostra o contorno de foco só para quem usa teclado — acessibilidade moderna.',
+          },
+        ],
+      },
+    },
+    {
+      id: 9,
       layout: 'checklist',
       title: 'Missão CSS — O que fazer agora',
       content: {
@@ -268,6 +575,7 @@ h1 { color: #4f46e5; }
           'Estilizar a lista com fundo escuro e border-radius',
           'Criar classe .done com text-decoration: line-through',
           'Usar Flexbox para alinhar ícone + texto em cada item',
+          'Montar uma galeria de cards com CSS Grid (auto-fit)',
           'Jogar CSS Grid Garden (https://cssgridgarden.com/)',
           'Jogar Flexbox Froggy (https://flexboxfroggy.com/)',
         ],
@@ -280,7 +588,7 @@ const terminalModule: Module = {
   id: 'dia-1/terminal',
   day: 1,
   title: 'Terminal — CLI Básico',
-  summary: 'Navegue pelo sistema de arquivos e execute comandos como um dev.',
+  summary: 'Módulo rápido: navegue pelo sistema de arquivos e execute comandos como um dev.',
   tags: ['Terminal', 'CLI', 'Linha de Comando'],
   icon: 'FaTerminal',
   topics: [
@@ -334,7 +642,7 @@ const terminalModule: Module = {
         ],
         code: `# Ver onde você está
 $ pwd
-/Users/thalissa/Documents
+/Users/aluno/Documents
 
 # Listar arquivos
 $ ls
@@ -444,6 +752,7 @@ const jsVariaveisModule: Module = {
     'Tipos primitivos: String, Number, Boolean, null, undefined',
     'Arrays: [1, 2, 3] e métodos push, pop, length, indexOf',
     'Objetos: { chave: valor } e acesso por ponto ou colchete',
+    'Interagindo com o usuário: alert, prompt e confirm',
     'typeof e conversão implícita vs explícita',
   ],
   exercises: [
@@ -627,6 +936,37 @@ console.log(nome, curso)  // "Carlos" "Desenvolvimento Web"`,
     },
     {
       id: 7,
+      layout: 'two-column',
+      title: 'Interagindo com o Usuário',
+      content: {
+        heading: 'alert, prompt e confirm — janelas do navegador',
+        text: [
+          'alert() mostra uma mensagem em uma caixinha',
+          'prompt() pergunta algo e devolve o texto digitado (sempre String!)',
+          'confirm() faz uma pergunta de sim/não e devolve true ou false',
+          'console.log() escreve no Console (F12) — ideal para depurar',
+        ],
+        code: `// Mostrar uma mensagem
+alert("Bem-vindo ao curso!")
+
+// Perguntar e guardar a resposta (vem como texto)
+const nome = prompt("Qual é o seu nome?")
+alert("Olá, " + nome + "!")
+
+// prompt sempre retorna String — converta se precisar
+const idade = Number(prompt("Sua idade?"))
+console.log(idade + 1) // idade no próximo ano
+
+// Confirmar uma ação (true / false)
+const certeza = confirm("Deseja continuar?")
+if (certeza) {
+  alert("Vamos lá!")
+}`,
+        codeLanguage: 'javascript',
+      },
+    },
+    {
+      id: 8,
       layout: 'checklist',
       title: 'Missão Variáveis — Console do Browser',
       content: {
@@ -639,6 +979,7 @@ console.log(nome, curso)  // "Carlos" "Desenvolvimento Web"`,
           'Criar objeto aluno com nome, idade e curso',
           'Acessar propriedades do objeto com ponto e com colchete',
           'Usar typeof para verificar o tipo de cada variável criada',
+          'Usar prompt para pedir o nome e alert para dar boas-vindas',
         ],
       },
     },
@@ -1456,6 +1797,7 @@ git push origin main
 // ─── Exportações ─────────────────────────────────────────────────────────────
 
 export const MODULES: Module[] = [
+  introducaoModule,
   htmlModule,
   cssModule,
   terminalModule,

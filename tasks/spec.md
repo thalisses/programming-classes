@@ -138,8 +138,13 @@ export interface Slide {
 }
 
 // Para layout 'animated-demo':
-// content.animationType: 'loop-counter' | 'if-else-flow' | 'switch-flow'
-// Componente React autônomo com animação CSS por tipo
+// content.animationType:
+//   'loop-counter' | 'if-else-flow'          → animações passo a passo (existentes)
+//   'html-tag-preview'                        → NOVO: código HTML + render ao vivo lado a lado
+//   'flexbox-playground'                      → NOVO: controles interativos de Flexbox
+//   'grid-playground'                         → NOVO: controles interativos de CSS Grid
+// Componente React autônomo por tipo; os 3 novos são INTERATIVOS (o aluno altera controles
+// e vê o resultado renderizado em tempo real dentro do slide).
 
 export interface Module {
   id: string;               // ex: 'dia-1/html'
@@ -179,6 +184,8 @@ O `HashRouter` do React Router gerencia todas as rotas. Nenhuma configuração d
 | Hash URL                        | View renderizada                 |
 |---------------------------------|----------------------------------|
 | `/#/` ou `/#`                   | Dashboard (3 dias de módulos)    |
+| `/#/dia-1/introducao`           | Página interna — Introdução        |
+| `/#/dia-1/introducao/slides`    | Slides — Introdução (Boas-vindas) |
 | `/#/dia-1/html`                 | Página interna do módulo HTML    |
 | `/#/dia-1/html/slides`          | Visualizador de slides — HTML    |
 | `/#/dia-1/css`                  | Página interna do módulo CSS     |
@@ -206,6 +213,30 @@ O `HashRouter` do React Router gerencia todas as rotas. Nenhuma configuração d
 ## Dados dos Módulos (Conteúdo Hardcoded)
 
 ### DIA 1
+
+#### Módulo: `dia-1/introducao` (NOVO)
+- **Título:** Boas-vindas — HTML, CSS & JavaScript
+- **Tag:** Dia 1
+- **Resumo:** O que é desenvolvimento web e o papel de cada uma das 3 linguagens.
+- **Tópicos:**
+  - Como a web funciona (browser, servidor, HTML/CSS/JS)
+  - A tríade: HTML = estrutura, CSS = estilo, JavaScript = comportamento
+  - Analogia: esqueleto (HTML), roupa/aparência (CSS), músculos/ações (JS)
+  - Ferramentas do curso: navegador, VS Code, DevTools (F12), Terminal, Git/GitHub
+  - Roteiro dos 3 dias: o que será visto em cada dia
+- **Exercício embutido (leve):** Abrir o navegador, abrir o DevTools (F12), reconhecer as abas
+  Elements/Console; criar a pasta `curso-dev` que será usada no curso.
+- **Slides:** 7 slides
+
+  | Slide | Layout | Conteúdo |
+  |-------|--------|----------|
+  | 1 | `cover` | Capa — Boas-vindas ao curso |
+  | 2 | `two-column` | Como a web funciona (texto + diagrama/código simples) |
+  | 3 | `cards` | A tríade: HTML, CSS, JS — o papel de cada um |
+  | 4 | `two-column` | Mesma página evoluindo: só HTML → + CSS → + JS |
+  | 5 | `table` | Roteiro dos 3 dias (Dia → temas) |
+  | 6 | `cards` | Ferramentas: navegador, VS Code, DevTools, Terminal |
+  | 7 | `checklist` | Como aproveitar o curso + primeiro passo prático |
 
 #### Módulo: `dia-1/html`
 - **Título:** HTML — Fundamentos
@@ -400,19 +431,20 @@ O `HashRouter` do React Router gerencia todas as rotas. Nenhuma configuração d
 
 ## Estrutura dos Slides (por módulo)
 
-**Contagem de slides por módulo:**
+**Contagem de slides por módulo (alvo após enriquecimento — cada módulo ≈ 1h):**
 
 | Módulo | Slides | Observação |
 |--------|--------|------------|
-| `dia-1/html` | 5 | Padrão |
-| `dia-1/css` | 5 | Padrão |
-| `dia-1/terminal` | 5 | Padrão |
-| `dia-2/javascript-variaveis` | 7 | Exemplos de código expandidos |
-| `dia-2/javascript-condicionais` | 7 | Inclui slide `animated-demo` (fluxograma) |
-| `dia-2/javascript-loops` | 7 | Inclui slide `animated-demo` (counter step-by-step) |
-| `dia-3/github` | 5 | Padrão |
-| `dia-3/codespaces-ia` | 5 | Padrão |
-| `dia-3/github-pages` | 5 | Padrão |
+| `dia-1/introducao` | 7 | **NOVO** — Boas-vindas rápida (~15min): visão geral de HTML/CSS/JS + roteiro dos 3 dias |
+| `dia-1/html` | 10 | Expandido: formatação de texto, mídia, semântica, tabelas/forms + demo `html-tag-preview` |
+| `dia-1/css` | 11 | Expandido: cores, fontes, box model + demos `flexbox-playground` e `grid-playground` |
+| `dia-1/terminal` | 5 | Mais curto (não precisa de 1h) |
+| `dia-2/javascript-variaveis` | 9 | + interações (`alert`/`prompt`/`confirm`) e template literals |
+| `dia-2/javascript-condicionais` | 8 | Inclui `animated-demo` (fluxograma `if-else-flow`) |
+| `dia-2/javascript-loops` | 8 | Inclui `animated-demo` (`loop-counter` step-by-step) |
+| `dia-3/github` | 6 | Atualizado: branch `main`, `git switch`, fluxo atual |
+| `dia-3/codespaces-ia` | 6 | Atualizado: nomenclatura atual do Copilot/Codespaces |
+| `dia-3/github-pages` | 6 | Polido |
 
 **Layouts disponíveis:**
 
@@ -441,6 +473,26 @@ O componente `AnimatedDemoSlide` recebe `animationType` e renderiza uma das 2 an
 - Cada célula do array acende quando preenchida (verde → fade)
 - Exibe `i = 0`, `i = 1`, ..., `i = 4` com animação step (CSS `animation-delay`)
 
+#### `animationType: 'html-tag-preview'` (NOVO — usado em: HTML)
+- Seletor de tags comuns (títulos, parágrafo, listas, link, imagem, tabela, form, semânticas)
+- Ao selecionar uma tag: painel esquerdo mostra o **código HTML** (syntax highlight),
+  painel direito mostra o **render ao vivo** daquele HTML
+- Interativo: o aluno clica/troca a tag e vê a diferença imediatamente
+
+#### `animationType: 'flexbox-playground'` (NOVO — usado em: CSS)
+- Container flex com 3–5 caixas coloridas renderizadas ao vivo
+- Controles (botões/selects) para: `flex-direction`, `justify-content`,
+  `align-items`, `flex-wrap`, `gap`
+- O CSS aplicado é exibido em tempo real (ex: `justify-content: center;`)
+- Interativo: mudar um controle reposiciona as caixas instantaneamente
+
+#### `animationType: 'grid-playground'` (NOVO — usado em: CSS)
+- Container grid com N itens renderizados ao vivo
+- Controles para: número de colunas (`grid-template-columns: repeat(N, 1fr)`),
+  `gap`, `justify-items`/`align-items`
+- O CSS aplicado (`grid-template-columns`, `gap`) é exibido em tempo real
+- Interativo: alterar colunas/gap re-desenha a grade instantaneamente
+
 ### Navegação dos Slides
 
 - Botões `← Anterior` / `Próximo →`
@@ -461,7 +513,7 @@ O componente `AnimatedDemoSlide` recebe `animationType` e renderiza uma das 2 an
 │  "Curso de Programação — 3 dias"             │
 ├─────────────────────────────────────────────┤
 │  BLOCO DIA 1 — Fundamentos Web              │
-│  [Card HTML] [Card CSS] [Card Terminal]      │
+│  [Card Introdução] [Card HTML] [Card CSS] [Card Terminal] │
 ├─────────────────────────────────────────────┤
 │  BLOCO DIA 2 — JavaScript                   │
 │  [Card Variáveis] [Card Condicionais] [Card Loops] │
@@ -582,6 +634,43 @@ Cada Card contém:
 
 ---
 
+## Escopo — Iteração 2 (Enriquecimento de Conteúdo)
+
+**Objetivo desta iteração:** aprofundar o conteúdo pedagógico de cada módulo (cada módulo ≈ 1h,
+alunos com computador em mãos), adicionar exemplos visuais e exercícios práticos em aula, e
+corrigir conteúdo desatualizado — usando os PDFs em `html-css-aulas/aulas-pdf/` e
+`javascript-aulas/aulas-pdf/` como material de apoio.
+
+### Entregas
+
+1. **Novo módulo `dia-1/introducao`** — módulo de boas-vindas explicando o que são HTML, CSS e
+   JavaScript e o roteiro dos 3 dias (7 slides). Dia 1 passa a ter 4 módulos.
+2. **3 novos tipos interativos de `animated-demo`:**
+   - `html-tag-preview` — código HTML + render ao vivo (no módulo HTML)
+   - `flexbox-playground` — controles interativos de Flexbox (no módulo CSS)
+   - `grid-playground` — controles interativos de CSS Grid (no módulo CSS)
+3. **Slides expandidos** em todos os módulos conforme a tabela "Contagem de slides".
+4. **Exercícios de aula** ampliados para HTML, CSS e JavaScript (steps numerados embutidos).
+5. **Correção de conteúdo desatualizado:**
+   - HTML: `<meta viewport>`, tags semânticas HTML5, `loading="lazy"`, `<picture>`/`<audio>`/`<video>`
+   - CSS: `gap` em Flexbox, `rem`/`clamp()`, `:focus-visible`, fontes via Google Fonts
+   - JavaScript: `const`/`let` como padrão (`var` como legado), template literals, arrow functions
+   - Git/GitHub: branch padrão `main` (não `master`), `git switch`/`git restore`, fluxo atual
+   - Codespaces/Copilot: nomenclatura atual (GitHub Copilot, Codespaces)
+
+### Novos Success Criteria
+
+- [ ] **SC-16:** Dashboard exibe 10 módulos; Dia 1 mostra 4 cards (Introdução, HTML, CSS, Terminal)
+- [ ] **SC-17:** Módulo `dia-1/introducao` acessível e com 7 slides renderizados
+- [ ] **SC-18:** Demo `html-tag-preview` renderiza HTML ao vivo e troca de tag ao interagir
+- [ ] **SC-19:** Demo `flexbox-playground` reposiciona as caixas ao alterar os controles
+- [ ] **SC-20:** Demo `grid-playground` re-desenha a grade ao alterar colunas/gap
+- [ ] **SC-21:** Nenhum slide tem overflow/scroll interno em 1280×720 (demos interativas incluídas)
+- [ ] **SC-22:** `npx tsc --noEmit` e `npm run lint` passam sem erros após as mudanças
+- [ ] **SC-23:** Conteúdo desatualizado listado acima foi revisado e corrigido
+
+---
+
 ## Decisões Confirmadas
 
 | # | Questão | Decisão |
@@ -592,3 +681,7 @@ Cada Card contém:
 | 4 | Template Codespaces | **Pendente** — URL a ser fornecida pelo instrutor |
 | 5 | Logo/Branding | **Apenas texto + ícone** (`FaGraduationCap`) |
 | 6 | Exercícios HTML/Terminal | **Steps numerados embutidos** na página do módulo |
+| 7 | Duração | **Cada módulo ≈ 1h** (curso mais longo, não 1h/dia total) |
+| 8 | Módulo introdutório | **Novo módulo separado** `dia-1/introducao` no início do Dia 1 |
+| 9 | Demos visuais | **Interativas com controles** (aluno altera e vê resultado ao vivo) |
+| 10 | Fonte de conteúdo | **Hardcoded** em `modules.ts`, enriquecido pelos PDFs das pastas de aulas |
