@@ -8,6 +8,12 @@ import Breadcrumb from '../components/Breadcrumb/Breadcrumb'
 import { getModuleById, MODULES } from '../data/modules'
 import { useProgress } from '../hooks/useProgress'
 
+const DAY_BADGE_COLORS: Record<number, string> = {
+  1: 'bg-orange-500/15 text-orange-700 border-orange-500/40 dark:text-orange-300 dark:bg-orange-400/15 dark:border-orange-300/40',
+  2: 'bg-yellow-500/15 text-yellow-700 border-yellow-500/40 dark:text-yellow-300 dark:bg-yellow-400/15 dark:border-yellow-300/40',
+  3: 'bg-emerald-500/15 text-emerald-700 border-emerald-500/40 dark:text-emerald-300 dark:bg-emerald-400/15 dark:border-emerald-300/40',
+}
+
 export default function ModulePage() {
   const { day, moduleSlug } = useParams<{ day: string; moduleSlug: string }>()
   const navigate = useNavigate()
@@ -35,7 +41,7 @@ export default function ModulePage() {
         {/* Module header */}
         <div className="mb-8">
           <div className="flex flex-wrap gap-2 mb-3">
-            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-accent-indigo/20 text-accent-indigo border border-accent-indigo/30">
+            <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${DAY_BADGE_COLORS[mod.day]}`}>
               Dia {mod.day}
             </span>
             {mod.tags.map((t) => (
@@ -44,7 +50,7 @@ export default function ModulePage() {
               </span>
             ))}
             {isCompleted(mod.id) && (
-              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-accent-emerald/20 text-accent-emerald border border-accent-emerald/30">
+              <span className="text-xs font-semibold px-3 py-1 rounded-full border bg-emerald-500/15 text-emerald-700 border-emerald-500/40 dark:text-emerald-300 dark:bg-emerald-400/15 dark:border-emerald-300/40">
                 ✓ Concluído
               </span>
             )}
@@ -56,7 +62,7 @@ export default function ModulePage() {
         {/* Topics */}
         <section className="bg-bg-card border border-bg-card-alt rounded-2xl p-6 mb-6">
           <div className="flex items-center gap-2 mb-4">
-            <FaBookOpen className="text-accent-indigo" />
+            <FaBookOpen className="text-indigo-600 dark:text-indigo-300" />
             <h2 className="font-heading font-semibold text-text-primary text-lg">
               O que você vai aprender
             </h2>
@@ -64,7 +70,7 @@ export default function ModulePage() {
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {mod.topics.map((topic, i) => (
               <li key={i} className="flex items-start gap-2.5 text-text-primary text-sm leading-relaxed">
-                <FaChevronRight className="text-accent-indigo mt-0.5 shrink-0 text-xs" />
+                <FaChevronRight className="text-indigo-600 dark:text-indigo-300 mt-0.5 shrink-0 text-xs" />
                 <span dangerouslySetInnerHTML={{ __html: topic }} />
               </li>
             ))}
@@ -107,7 +113,7 @@ export default function ModulePage() {
                     href={ex.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-accent-indigo/20 text-accent-indigo border border-accent-indigo/30 rounded-lg text-sm font-semibold hover:bg-accent-indigo/30 transition-colors mb-4"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/15 text-indigo-700 border border-indigo-500/40 rounded-lg text-sm font-semibold hover:bg-indigo-500/25 dark:text-indigo-300 dark:bg-indigo-400/15 dark:border-indigo-300/40 dark:hover:bg-indigo-400/25 transition-colors mb-4"
                   >
                     <FaArrowUpRightFromSquare className="text-xs" />
                     Abrir exercício externo
@@ -118,7 +124,7 @@ export default function ModulePage() {
                   <ol className="flex flex-col gap-3">
                     {ex.steps.map((step, si) => (
                       <li key={si} className="flex gap-3 items-start">
-                        <span className="w-7 h-7 rounded-full bg-accent-indigo/20 text-accent-indigo text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                        <span className="w-7 h-7 rounded-full bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 dark:bg-indigo-400/15 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
                           {si + 1}
                         </span>
                         <span

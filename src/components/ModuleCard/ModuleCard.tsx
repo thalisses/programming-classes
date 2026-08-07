@@ -21,7 +21,7 @@ const ICON_MAP: Record<string, React.ReactNode> = {
 const DAY_COLORS: Record<number, string> = {
   1: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
   2: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-  3: 'bg-accent-emerald/20 text-accent-emerald border-accent-emerald/30',
+  3: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
 }
 
 interface ModuleCardProps {
