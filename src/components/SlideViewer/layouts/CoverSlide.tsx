@@ -7,9 +7,9 @@ interface CoverSlideProps {
 
 export default function CoverSlide({ title, content }: CoverSlideProps) {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 relative overflow-hidden">
+    <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-100 via-indigo-50 to-slate-100 dark:from-slate-900 dark:via-indigo-950 dark:to-slate-900 relative overflow-hidden">
       {/* Background glow */}
-      <div className="absolute w-96 h-96 bg-accent-indigo/20 rounded-full blur-3xl top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="absolute w-96 h-96 bg-accent-indigo/15 dark:bg-accent-indigo/20 rounded-full blur-3xl top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
       <div className="relative z-10 flex flex-col items-center text-center px-16 gap-6">
         <span className="inline-flex items-center px-5 py-2 bg-accent-emerald/20 text-accent-emerald border border-accent-emerald/40 rounded-full text-xl font-heading font-semibold tracking-widest uppercase">

@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { FaXmark, FaExpand, FaCompress, FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
+import { FaXmark, FaExpand, FaCompress, FaChevronLeft, FaChevronRight, FaSun, FaMoon } from 'react-icons/fa6'
 import SlideRenderer from '../components/SlideViewer/SlideRenderer'
 import { getModuleById } from '../data/modules'
+import { useTheme } from '../hooks/useTheme'
 
 export default function SlidesPage() {
   const { day, moduleSlug } = useParams<{ day: string; moduleSlug: string }>()
@@ -13,6 +14,7 @@ export default function SlidesPage() {
 
   const [current, setCurrent] = useState(0)
   const [isFullscreen, setIsFullscreen] = useState(false)
+  const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
     if (!mod) navigate('/')
@@ -55,7 +57,7 @@ export default function SlidesPage() {
   const slide = mod.slides[current]
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col">
+    <div className="min-h-screen bg-bg-base flex flex-col">
       {/* Top bar */}
       <div className="flex items-center justify-between px-5 py-3 bg-bg-card border-b border-bg-card-alt shrink-0">
         <Link
@@ -68,13 +70,23 @@ export default function SlidesPage() {
 
         <span className="font-heading font-semibold text-text-primary text-sm">{mod.title}</span>
 
-        <button
-          onClick={toggleFullscreen}
-          className="flex items-center gap-2 text-text-muted hover:text-text-primary transition-colors text-sm"
-          aria-label={isFullscreen ? 'Sair do modo tela cheia' : 'Tela cheia'}
-        >
-          {isFullscreen ? <FaCompress /> : <FaExpand />}
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            className="w-8 h-8 rounded-xl bg-bg-card-alt hover:bg-accent-indigo/20 flex items-center justify-center text-text-muted hover:text-accent-indigo transition-colors"
+            aria-label={theme === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro'}
+          >
+            {theme === 'dark' ? <FaSun className="text-sm" /> : <FaMoon className="text-sm" />}
+          </button>
+
+          <button
+            onClick={toggleFullscreen}
+            className="flex items-center gap-2 text-text-muted hover:text-text-primary transition-colors text-sm"
+            aria-label={isFullscreen ? 'Sair do modo tela cheia' : 'Tela cheia'}
+          >
+            {isFullscreen ? <FaCompress /> : <FaExpand />}
+          </button>
+        </div>
       </div>
 
       {/* Slide area */}

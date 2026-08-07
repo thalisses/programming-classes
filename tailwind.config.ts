@@ -5,16 +5,17 @@ const config: Config = {
     './index.html',
     './src/**/*.{ts,tsx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        'bg-base': '#0f172a',
-        'bg-card': '#1e293b',
-        'bg-card-alt': '#334155',
-        'accent-indigo': '#4f46e5',
-        'accent-emerald': '#10b981',
-        'text-primary': '#f1f5f9',
-        'text-muted': '#94a3b8',
+        'bg-base': 'var(--bg-base)',
+        'bg-card': 'var(--bg-card)',
+        'bg-card-alt': 'var(--bg-card-alt)',
+        'accent-indigo': 'var(--accent-indigo)',
+        'accent-emerald': 'var(--accent-emerald)',
+        'text-primary': 'var(--text-primary)',
+        'text-muted': 'var(--text-muted)',
       },
       fontFamily: {
         heading: ['Poppins', 'sans-serif'],

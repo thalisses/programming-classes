@@ -1,3 +1,87 @@
+# Spec: Light Mode + Theme Switch
+
+## Objetivo
+
+Adicionar suporte a **light mode** em toda a aplicação e um **switch de tema** visível em todas as páginas, permitindo ao usuário alternar entre dark e light mode. A preferência deve ser persistida no `localStorage`.
+
+**Usuário-alvo:** Alunos que preferem interface clara em ambientes iluminados.
+
+**Sucesso:** O usuário consegue alternar entre dark e light mode em qualquer página. A preferência é lembrada ao recarregar. Todas as telas (Dashboard, ModulePage, SlidesPage) ficam visualmente coerentes nos dois modos.
+
+---
+
+## Tech Stack
+
+Mesmo stack existente. Acréscimos:
+- `darkMode: 'class'` no `tailwind.config.ts`
+- CSS variables no `global.css` para os tokens de cor
+- `React.createContext` para o estado do tema
+
+---
+
+## Commands
+
+```bash
+npm run dev    # verificar visualmente os dois modos
+npm run build  # garantir que o build de produção não quebra
+npm run lint   # sem novos erros de lint
+```
+
+---
+
+## Estrutura de Arquivos Tocados
+
+```
+tailwind.config.ts          → darkMode: 'class' + cores via CSS vars
+src/styles/global.css       → :root (light) e :root.dark (dark) tokens
+src/context/ThemeContext.tsx → ThemeProvider + useTheme hook (NOVO)
+src/App.tsx                 → envolve com ThemeProvider + aplica classe no <html>
+src/components/Header/Header.tsx     → botão ThemeToggle
+src/pages/SlidesPage.tsx    → botão ThemeToggle na barra superior
+```
+
+---
+
+## Decisões de Design
+
+- **Estratégia:** CSS variables + `darkMode: 'class'` do Tailwind. Os tokens (`bg-bg-base`, `bg-bg-card`, etc.) continuam os mesmos — apenas seus valores mudam via variável CSS. Sem alterar classes nos componentes existentes.
+- **Padrão:** dark mode continua como padrão; light mode é opt-in.
+- **Persistência:** `localStorage.getItem('theme')` → `'light'` | `'dark'`.
+- **Classe no DOM:** `dark` adicionada/removida em `<html>`.
+- **Switch:** ícone de sol (light) / lua (dark) no Header e na barra da SlidesPage.
+
+---
+
+## Paleta Light Mode
+
+| Token | Dark | Light |
+|---|---|---|
+| `--bg-base` | `#0f172a` | `#f8fafc` |
+| `--bg-card` | `#1e293b` | `#ffffff` |
+| `--bg-card-alt` | `#334155` | `#e2e8f0` |
+| `--text-primary` | `#f1f5f9` | `#0f172a` |
+| `--text-muted` | `#94a3b8` | `#64748b` |
+| `--accent-indigo` | `#4f46e5` | `#4f46e5` |
+| `--accent-emerald` | `#10b981` | `#059669` |
+
+---
+
+## Success Criteria
+
+- [ ] Alternância dark/light funciona em todas as 3 páginas sem reload
+- [ ] Preferência persiste no localStorage entre sessões
+- [ ] Switch visível e acessível no Header e na SlidesPage
+- [ ] Sem regressão visual no dark mode existente
+- [ ] `npm run build` e `npm run lint` passam sem erros
+
+## Boundaries
+
+- **Always:** manter os tokens de cor existentes (sem renomear classes)
+- **Ask first:** mudanças na paleta de cores além das listadas acima
+- **Never:** alterar classes de cor individualmente nos componentes existentes
+
+---
+
 # Spec: Plataforma Educacional Interativa — Curso de Programação 3 Dias
 
 ## Objetivo
