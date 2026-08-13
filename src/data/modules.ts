@@ -1164,7 +1164,6 @@ switch (dia) {
           'Testar: verificar se x = 15 está entre 10 e 20 com &&',
           'Converter o exercício 1 para operador ternário',
           'Criar switch para dias da semana (1 = "Segunda", etc.)',
-          'Bônus: função que recebe nota e retorna "Aprovado", "Recuperação" ou "Reprovado"',
         ],
       },
     },

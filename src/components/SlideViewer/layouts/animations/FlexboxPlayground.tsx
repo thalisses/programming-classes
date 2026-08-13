@@ -17,7 +17,7 @@ function ControlGroup<T extends string | number>({
 }: ControlGroupProps<T>) {
   return (
     <div className="flex flex-col gap-1.5">
-      <span className="font-code text-xs text-text-muted">{label}</span>
+      <span className="font-code text-[24px] text-text-muted">{label}</span>
       <div className="flex flex-wrap gap-1.5">
         {options.map((opt) => {
           const active = opt.value === value
@@ -26,7 +26,7 @@ function ControlGroup<T extends string | number>({
               key={String(opt.value)}
               type="button"
               onClick={() => onChange(opt.value)}
-              className={`rounded-lg px-2.5 py-1 font-code text-xs transition-colors ${
+              className={`rounded-lg px-2.5 py-1 font-code text-[24px] transition-colors ${
                 active
                   ? 'bg-accent-indigo text-white'
                   : 'bg-bg-card text-text-muted hover:bg-bg-card-alt'
@@ -130,7 +130,7 @@ export default function FlexboxPlayground() {
           {BOX_COLORS.map((color, i) => (
             <div
               key={color}
-              className="rounded-lg flex items-center justify-center font-heading font-bold text-white text-xl shadow-lg"
+              className="rounded-lg flex items-center justify-center font-heading font-bold text-white text-[26px] shadow-lg"
               style={{
                 background: color,
                 width: 72,
@@ -142,7 +142,7 @@ export default function FlexboxPlayground() {
           ))}
         </div>
 
-        <pre className="rounded-xl bg-slate-800 border border-slate-700 p-4 font-code text-xs text-text-primary leading-relaxed">
+        <pre className="rounded-xl bg-slate-800 border border-slate-700 p-5 font-code text-[26px] text-text-primary leading-relaxed">
           <span className="text-cyan-300">.container</span> {'{'}
           {'\n'}  display: <span className="text-accent-emerald">flex</span>;
           {'\n'}  flex-direction: <span className="text-accent-emerald">{direction}</span>;

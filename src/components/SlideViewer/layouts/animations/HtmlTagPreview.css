@@ -2,10 +2,11 @@
   background: #ffffff;
   color: #1e293b;
   border-radius: 12px;
-  padding: 20px;
+  padding: 24px;
   overflow: auto;
   font-family: 'Lato', system-ui, sans-serif;
-  line-height: 1.5;
+  font-size: 26px;
+  line-height: 1.7;
 }
 
 .html-preview h1,
@@ -18,17 +19,18 @@
 }
 
 .html-preview h1 {
-  font-size: 28px;
+  font-size: 42px;
 }
 .html-preview h2 {
-  font-size: 22px;
+  font-size: 34px;
 }
 .html-preview h3 {
-  font-size: 18px;
+  font-size: 30px;
 }
 
 .html-preview p {
   margin: 0 0 10px;
+  font-size: 26px;
 }
 
 .html-preview a {
@@ -39,8 +41,9 @@
 .html-preview ul,
 .html-preview ol {
   margin: 0 0 10px;
-  padding-left: 22px;
+  padding-left: 28px;
   list-style-position: outside;
+  font-size: 26px;
 }
 
 .html-preview ul {
@@ -54,6 +57,7 @@
 .html-preview li {
   margin-bottom: 4px;
   display: list-item;
+  font-size: 26px;
 }
 
 .html-preview img {
@@ -69,8 +73,9 @@
 .html-preview th,
 .html-preview td {
   border: 1px solid #cbd5e1;
-  padding: 6px 10px;
+  padding: 10px 14px;
   text-align: left;
+  font-size: 26px;
 }
 
 .html-preview th {
@@ -81,16 +86,18 @@
   display: block;
   margin-bottom: 4px;
   font-weight: 700;
+  font-size: 26px;
 }
 
 .html-preview input,
 .html-preview textarea {
   width: 100%;
-  padding: 6px 8px;
+  padding: 10px 12px;
   border: 1px solid #cbd5e1;
   border-radius: 6px;
   margin-bottom: 10px;
   font-family: inherit;
+  font-size: 26px;
 }
 
 .html-preview button {
@@ -98,8 +105,9 @@
   color: #fff;
   border: none;
   border-radius: 6px;
-  padding: 8px 16px;
+  padding: 12px 20px;
   font-family: 'Poppins', sans-serif;
+  font-size: 26px;
   cursor: pointer;
 }
 
@@ -108,7 +116,7 @@
 }
 
 .html-preview figcaption {
-  font-size: 13px;
+  font-size: 26px;
   color: #64748b;
   margin-top: 4px;
 }
@@ -119,6 +127,7 @@
   padding: 4px 0 4px 12px;
   color: #475569;
   font-style: italic;
+  font-size: 26px;
 }
 
 .html-preview mark {

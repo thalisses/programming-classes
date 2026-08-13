@@ -126,7 +126,7 @@ export default function HtmlTagPreview() {
               key={ex.id}
               type="button"
               onClick={() => setSelected(i)}
-              className={`rounded-lg px-3 py-1 font-code text-xs transition-colors ${
+              className={`rounded-lg px-3 py-1 font-code text-[24px] transition-colors ${
                 active
                   ? 'bg-accent-indigo text-white'
                   : 'bg-bg-card text-text-muted hover:bg-bg-card-alt'
@@ -139,26 +139,27 @@ export default function HtmlTagPreview() {
       </div>
 
       {/* Code + live render */}
-      <div className="flex-1 grid grid-cols-2 gap-4 min-h-0">
-        <div className="rounded-xl overflow-hidden min-h-0">
+      <div className="flex-1 grid grid-cols-[1.6fr_0.9fr] gap-4 min-h-0">
+        <div className="rounded-xl overflow-hidden min-h-0 h-full">
           <SyntaxHighlighter
             language="html"
             style={atomOneDark}
             customStyle={{
               height: '100%',
+              minHeight: '100%',
               margin: 0,
               borderRadius: '12px',
-              fontSize: '13px',
-              lineHeight: '1.6',
-              padding: '18px',
+              fontSize: '27px',
+              lineHeight: '1.8',
+              padding: '26px',
             }}
           >
             {example.code}
           </SyntaxHighlighter>
         </div>
 
-        <div className="flex flex-col min-h-0">
-          <span className="font-code text-xs text-text-muted mb-1">resultado no navegador ↓</span>
+        <div className="flex flex-col min-h-0 h-full">
+          <span className="font-code text-[24px] text-text-muted mb-1">resultado no navegador ↓</span>
           {/* Conteúdo estático e literal deste arquivo (sem dados do usuário) — sem risco de XSS. */}
           <div
             className="html-preview flex-1 min-h-0"

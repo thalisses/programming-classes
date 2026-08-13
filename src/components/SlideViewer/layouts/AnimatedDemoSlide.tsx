@@ -12,10 +12,10 @@ interface AnimatedDemoSlideProps {
 
 export default function AnimatedDemoSlide({ title, content }: AnimatedDemoSlideProps) {
   return (
-    <div className="w-full h-full flex flex-col bg-bg-base p-10 gap-4">
+    <div className="w-full h-full flex flex-col bg-bg-base p-8 gap-3">
       <div>
-        <h2 className="font-heading font-bold text-text-primary text-4xl">{title}</h2>
-        <p className="text-accent-indigo font-semibold text-xl mt-1">{content.heading}</p>
+        <h2 className="font-heading font-bold text-text-primary text-[38px]">{title}</h2>
+        <p className="text-accent-indigo font-semibold text-[24px] mt-1">{content.heading}</p>
       </div>
       <div className="flex-1 min-h-0">
         {content.animationType === 'if-else-flow' && <IfElseFlow />}
@@ -24,7 +24,7 @@ export default function AnimatedDemoSlide({ title, content }: AnimatedDemoSlideP
         {content.animationType === 'flexbox-playground' && <FlexboxPlayground />}
         {content.animationType === 'grid-playground' && <GridPlayground />}
       </div>
-      <p className="text-text-muted text-lg text-center">{content.description}</p>
+      <p className="text-text-muted text-[22px] text-center">{content.description}</p>
     </div>
   )
 }

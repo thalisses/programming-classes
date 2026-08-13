@@ -8,7 +8,7 @@ export default function LoopCounter() {
     <div className="w-full h-full flex items-center justify-center">
       <div className="flex flex-col items-center gap-8">
         {/* Code snippet */}
-        <div className="bg-slate-800 rounded-xl px-8 py-4 font-code text-sm leading-loose border border-slate-700">
+        <div className="bg-slate-800 rounded-xl px-8 py-5 font-code text-[26px] leading-loose border border-slate-700 min-w-[420px]">
           <span className="text-yellow-300">for</span>
           <span className="text-white"> (</span>
           <span className="text-cyan-300">let</span>
@@ -25,11 +25,11 @@ export default function LoopCounter() {
 
         {/* Counter display */}
         <div className="flex items-center gap-4">
-          <span className="text-text-muted font-code text-lg">i =</span>
+          <span className="text-text-muted font-code text-[24px]">i =</span>
           {CELLS.map((n) => (
             <div
               key={n}
-              className={`lc-i lc-i--${n} w-12 h-12 rounded-xl border-2 border-bg-card-alt flex items-center justify-center font-heading font-bold text-xl text-text-muted`}
+              className={`lc-i lc-i--${n} w-12 h-12 rounded-xl border-2 border-bg-card-alt flex items-center justify-center font-heading font-bold text-[28px] text-text-muted`}
             >
               {n}
             </div>
@@ -38,17 +38,17 @@ export default function LoopCounter() {
 
         {/* Array visualization */}
         <div className="flex items-center gap-2">
-          <span className="text-text-muted font-code text-sm mr-2">array =</span>
-          <span className="text-text-muted font-code text-xl">[</span>
+          <span className="text-text-muted font-code text-[24px] mr-2">array =</span>
+          <span className="text-text-muted font-code text-[28px]">[</span>
           {CELLS.map((n) => (
             <div
               key={n}
-              className={`lc-cell lc-cell--${n} w-14 h-14 rounded-xl border-2 border-bg-card-alt bg-bg-card flex items-center justify-center font-heading font-bold text-2xl text-text-muted`}
+              className={`lc-cell lc-cell--${n} w-14 h-14 rounded-xl border-2 border-bg-card-alt bg-bg-card flex items-center justify-center font-heading font-bold text-[28px] text-text-muted`}
             >
               {n}
             </div>
           ))}
-          <span className="text-text-muted font-code text-xl">]</span>
+          <span className="text-text-muted font-code text-[28px]">]</span>
         </div>
       </div>
     </div>
