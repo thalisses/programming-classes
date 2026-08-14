@@ -737,6 +737,317 @@ $ rmdir meu-projeto`,
 
 // ─── DIA 2 ───────────────────────────────────────────────────────────────────
 
+const jsIntroModule: Module = {
+  id: 'dia-2/javascript-introducao',
+  day: 2,
+  title: 'Introdução ao JavaScript',
+  summary: 'Recap do Dia 1 com a metáfora da casa, primeiros scripts JS e interações com o usuário e a página.',
+  tags: ['JavaScript', 'Introdução', 'HTML', 'CSS'],
+  icon: 'FaJs',
+  topics: [
+    'Recap: HTML (estrutura), CSS (estilo) e JS (ações) — a metáfora da casa',
+    'O que é JavaScript e onde ele roda',
+    'Integrando JS no HTML com a tag <script>',
+    'Arquivo JS externo — criar e linkar no HTML',
+    'Funções em JavaScript e o evento onclick',
+    'console.log() — depurando no DevTools',
+    'Interação com o usuário: alert(), prompt() e confirm()',
+    'Interação com a página: getElementById() e innerHTML',
+  ],
+  exercises: [
+    {
+      label: 'Tarefa 1 — Olá, Mundo! (script inline)',
+      steps: [
+        'Crie uma pasta <code>ex001</code> com um arquivo <code>index.html</code> dentro',
+        'Adicione a estrutura base do HTML (<code>!</code> + Enter no VS Code)',
+        'Antes do <code>&lt;/body&gt;</code>, adicione: <code>&lt;script&gt;window.alert(\'Olá, Mundo!\')&lt;/script&gt;</code>',
+        'Abra o arquivo no navegador e veja o alerta aparecer',
+        'Se não funcionar, abra o DevTools (<code>F12</code>) → aba <strong>Console</strong> e leia o erro',
+      ],
+    },
+    {
+      label: 'Tarefa 2 — Arquivo JS Externo',
+      steps: [
+        'Na mesma pasta <code>ex001</code>, crie um arquivo chamado <code>scripts.js</code>',
+        'Dentro de <code>scripts.js</code>, escreva: <code>console.log(\'Script carregado!\')</code>',
+        'No <code>index.html</code>, substitua o <code>&lt;script&gt;</code> inline por: <code>&lt;script src="scripts.js"&gt;&lt;/script&gt;</code>',
+        'Recarregue o navegador, abra o DevTools (<code>F12</code>) → aba <strong>Console</strong> e veja a mensagem aparecer',
+      ],
+    },
+    {
+      label: 'Tarefa 3 — Interação com o Usuário',
+      steps: [
+        'Crie uma pasta <code>ex002</code> com <code>index.html</code> e <code>scripts.js</code>',
+        'No HTML, crie um botão: <code>&lt;button onclick="inicio()"&gt;Clique em mim!&lt;/button&gt;</code>',
+        'No <code>scripts.js</code>, escreva: <code>function inicio() { window.alert(\'Você clicou!\') }</code>',
+        'Carregue no navegador e clique no botão para testar',
+        'Modifique a função para pedir o nome com <code>prompt()</code> e exibir com <code>alert()</code>',
+      ],
+    },
+    {
+      label: 'Tarefa 4 — Resultado na Página',
+      steps: [
+        'Crie uma pasta <code>ex003</code> com <code>index.html</code> e <code>scripts.js</code>',
+        'No HTML, adicione: <code>&lt;section id="resultado"&gt;&lt;p&gt;Aqui vai aparecer o resultado...&lt;/p&gt;&lt;/section&gt;</code>',
+        'Conecte um botão ao HTML com <code>onclick="inicio()"</code>',
+        'No <code>scripts.js</code>, escreva a função <code>inicio()</code>',
+        'Dentro da função, capture o elemento: <code>let res = document.getElementById(\'resultado\')</code>',
+        'Altere o conteúdo: <code>res.innerHTML = \'&lt;p&gt;Olá! Seja bem-vindo!&lt;/p&gt;\'</code>',
+      ],
+    },
+  ],
+  slides: [
+    {
+      id: 1,
+      layout: 'cover',
+      title: 'Introdução ao JavaScript',
+      content: {
+        badge: 'DIA 2 · INTRODUÇÃO AO JS',
+        subtitle: 'Da estrutura e estilo... à interatividade. Vamos colocar vida nas suas páginas!',
+      },
+    },
+    {
+      id: 2,
+      layout: 'two-column',
+      title: 'A Tríade da Web — A Metáfora da Casa',
+      content: {
+        heading: 'HTML, CSS e JS têm papéis bem definidos',
+        text: [
+          '🏗️ HTML é a estrutura — paredes, portas e janelas da casa',
+          '🎨 CSS é a pintura — cores, decoração e o estilo de cada ambiente',
+          '⚡ JavaScript são as ações — a tomada que liga, a porta que abre',
+        ],
+        image: {
+          src: `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 340' width='520' height='340' font-family='sans-serif'><rect width='520' height='340' fill='%230f172a'/><rect x='120' y='170' width='280' height='140' fill='%231e293b' stroke='%234f46e5' stroke-width='2.5'/><polygon points='100,170 260,70 420,170' fill='%23334155' stroke='%234f46e5' stroke-width='2.5'/><rect x='215' y='220' width='90' height='90' fill='%23475569' stroke='%236366f1' stroke-width='1.5'/><circle cx='298' cy='268' r='5' fill='%23fbbf24'/><rect x='140' y='195' width='55' height='45' fill='%230ea5e9' opacity='0.6' stroke='%236366f1' stroke-width='1'/><rect x='325' y='195' width='55' height='45' fill='%230ea5e9' opacity='0.6' stroke='%236366f1' stroke-width='1'/><text x='260' y='50' fill='%236366f1' font-size='12' text-anchor='middle' font-weight='bold'>HTML</text><text x='260' y='65' fill='%2394a3b8' font-size='10' text-anchor='middle'>estrutura</text><line x1='260' y1='68' x2='260' y2='88' stroke='%236366f1' stroke-width='1.5' stroke-dasharray='3,2'/><text x='58' y='208' fill='%2310b981' font-size='12' text-anchor='middle' font-weight='bold'>CSS</text><text x='58' y='223' fill='%2394a3b8' font-size='10' text-anchor='middle'>estilo</text><line x1='93' y1='208' x2='118' y2='200' stroke='%2310b981' stroke-width='1.5' stroke-dasharray='3,2'/><text x='462' y='208' fill='%23f59e0b' font-size='12' text-anchor='middle' font-weight='bold'>JS</text><text x='462' y='223' fill='%2394a3b8' font-size='10' text-anchor='middle'>ações</text><line x1='427' y1='263' x2='407' y2='263' stroke='%23f59e0b' stroke-width='1.5' stroke-dasharray='3,2'/><polygon points='455,238 448,263 453,263 446,283 460,255 455,255' fill='%23f59e0b' opacity='0.9'/></svg>`,
+          srcLight: `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 340' width='520' height='340' font-family='sans-serif'><rect x='120' y='170' width='280' height='140' fill='%23ede9fe' stroke='%234f46e5' stroke-width='2.5'/><polygon points='100,170 260,70 420,170' fill='%23ddd6fe' stroke='%234f46e5' stroke-width='2.5'/><rect x='215' y='220' width='90' height='90' fill='%23c7d2fe' stroke='%234f46e5' stroke-width='1.5'/><circle cx='298' cy='268' r='5' fill='%23d97706'/><rect x='140' y='195' width='55' height='45' fill='%2393c5fd' opacity='0.8' stroke='%234f46e5' stroke-width='1'/><rect x='325' y='195' width='55' height='45' fill='%2393c5fd' opacity='0.8' stroke='%234f46e5' stroke-width='1'/><text x='260' y='50' fill='%234f46e5' font-size='12' text-anchor='middle' font-weight='bold'>HTML</text><text x='260' y='65' fill='%2364748b' font-size='10' text-anchor='middle'>estrutura</text><line x1='260' y1='68' x2='260' y2='88' stroke='%234f46e5' stroke-width='1.5' stroke-dasharray='3,2'/><text x='58' y='208' fill='%23059669' font-size='12' text-anchor='middle' font-weight='bold'>CSS</text><text x='58' y='223' fill='%2364748b' font-size='10' text-anchor='middle'>estilo</text><line x1='93' y1='208' x2='118' y2='200' stroke='%23059669' stroke-width='1.5' stroke-dasharray='3,2'/><text x='462' y='208' fill='%23d97706' font-size='12' text-anchor='middle' font-weight='bold'>JS</text><text x='462' y='223' fill='%2364748b' font-size='10' text-anchor='middle'>ações</text><line x1='427' y1='263' x2='407' y2='263' stroke='%23d97706' stroke-width='1.5' stroke-dasharray='3,2'/><polygon points='455,238 448,263 453,263 446,283 460,255 455,255' fill='%23d97706' opacity='0.9'/></svg>`,
+          alt: 'Casa representando a tríade: HTML é a estrutura, CSS é o estilo, JS são as ações',
+        },
+      },
+    },
+    {
+      id: 3,
+      layout: 'cards',
+      title: 'Recap — HTML',
+      content: {
+        heading: 'O que aprendemos no Dia 1',
+        items: [
+          {
+            icon: 'FaHtml5',
+            title: 'Estrutura Base',
+            description: '<!DOCTYPE html>, <html>, <head> e <body> — o esqueleto de toda página.',
+          },
+          {
+            icon: 'FaCode',
+            title: 'Tags Principais',
+            description: 'h1–h6, p, a, img, ul/li, div, section, button — os blocos de conteúdo.',
+          },
+          {
+            icon: 'FaLayerGroup',
+            title: 'Atributos',
+            description: 'id, class, href, src, alt — informações extras que damos às tags.',
+          },
+        ],
+      },
+    },
+    {
+      id: 4,
+      layout: 'cards',
+      title: 'Recap — CSS',
+      content: {
+        heading: 'Estilo e layout que aprendemos',
+        items: [
+          {
+            icon: 'FaCss3Alt',
+            title: 'Seletores',
+            description: 'Por tag (p), por classe (.destaque) e por id (#topo) — como mirar um elemento.',
+          },
+          {
+            icon: 'FaCompass',
+            title: 'Box Model',
+            description: 'margin (fora), border (borda) e padding (dentro) — todo elemento é uma caixa.',
+          },
+          {
+            icon: 'FaPalette',
+            title: 'Cores & Fontes',
+            description: 'color, background-color, font-family, font-size — a identidade visual da página.',
+          },
+        ],
+      },
+    },
+    {
+      id: 5,
+      layout: 'two-column',
+      title: 'O que é JavaScript?',
+      content: {
+        heading: 'A linguagem que dá vida à página',
+        text: [
+          'JavaScript roda diretamente no navegador — sem instalar nada',
+          'Também pode rodar no servidor com Node.js',
+          'É a única linguagem de programação nativa da web',
+          'Controla comportamentos: reage a cliques, valida dados, atualiza a tela',
+        ],
+        code: `// Teste agora! Abra o DevTools (F12) → Console:
+
+console.log("Olá, mundo!")        // imprime no Console
+console.log(1 + 1)                // 2
+console.log(typeof "texto")       // "string"`,
+        codeLanguage: 'javascript',
+      },
+    },
+    {
+      id: 6,
+      layout: 'two-column',
+      title: 'Integrando JS no HTML',
+      content: {
+        heading: 'Duas formas de adicionar JavaScript',
+        text: [
+          'Inline: tag <script> dentro do próprio HTML, acima do </body>',
+          'Externo: arquivo .js separado, linkado com src="scripts.js"',
+          'Prefira o arquivo externo — mais organizado e reutilizável',
+          'O navegador lê o JS na ordem — coloque sempre no fim do body',
+        ],
+        code: `<!-- ① Inline (para testes rápidos) -->
+<body>
+  <h1>Minha Página</h1>
+  <script>
+    window.alert('Olá, Mundo!')
+  </script>
+</body>
+
+<!-- ② Arquivo externo (recomendado) -->
+<body>
+  <h1>Minha Página</h1>
+  <script src="scripts.js"></script>
+</body>`,
+        codeLanguage: 'html',
+      },
+    },
+    {
+      id: 7,
+      layout: 'two-column',
+      title: 'Funções em JavaScript',
+      content: {
+        heading: 'Agrupando comandos com function',
+        text: [
+          'function define um bloco de código reutilizável',
+          'O bloco fica entre chaves { } e só roda quando chamado',
+          'onclick="nomeDaFuncao()" dispara a função ao clicar no botão',
+          'Os parênteses () são obrigatórios na definição e na chamada',
+        ],
+        code: `<!-- HTML: botão chama a função ao ser clicado -->
+<button onclick="clicou()">Clica em mim!</button>
+<script src="scripts.js"></script>
+
+// scripts.js
+function clicou() {
+  window.alert('Você clicou no botão!')
+}`,
+        codeLanguage: 'html',
+      },
+    },
+    {
+      id: 8,
+      layout: 'two-column',
+      title: 'console.log() — Seu Melhor Amigo',
+      content: {
+        heading: 'Depurando com o Console do DevTools',
+        text: [
+          'console.log() imprime qualquer valor no Console (F12)',
+          'Use para verificar se um valor chegou como esperado',
+          'O console mostra erros em vermelho com a linha do problema',
+          'Abra sempre o DevTools enquanto desenvolve — é sua lanterna!',
+        ],
+        code: `// scripts.js
+function inicio() {
+  console.log("Função inicio() foi chamada!")
+
+  let nome = window.prompt("Qual é o seu nome?")
+  console.log("Nome recebido:", nome)
+
+  window.alert("Olá, " + nome + "!")
+}
+
+// No Console você verá:
+// → Função inicio() foi chamada!
+// → Nome recebido: Ana`,
+        codeLanguage: 'javascript',
+      },
+    },
+    {
+      id: 9,
+      layout: 'two-column',
+      title: 'Interação com o Usuário',
+      content: {
+        heading: 'alert, prompt e confirm',
+        text: [
+          'alert() abre uma janelinha com uma mensagem',
+          'prompt() pede um dado e devolve o texto digitado',
+          'confirm() faz uma pergunta de sim/não — devolve true ou false',
+          'window. é opcional: alert() e window.alert() são idênticos',
+        ],
+        code: `function inicio() {
+  // Exibir uma mensagem
+  alert("Bem-vindo ao curso!")
+
+  // Pedir um dado ao usuário
+  let nome = prompt("Qual é o seu nome?")
+  alert("Olá, " + nome + "!")
+
+  // Pergunta de sim ou não
+  let certeza = confirm("Deseja continuar?")
+  if (certeza) {
+    alert("Ótimo! Vamos lá!")
+  }
+}`,
+        codeLanguage: 'javascript',
+      },
+    },
+    {
+      id: 10,
+      layout: 'two-column',
+      title: 'Interação com a Página',
+      content: {
+        heading: 'Mudando elementos do HTML com JS',
+        text: [
+          'getElementById("id") captura um elemento pelo atributo id',
+          '.innerHTML = "..." substitui o conteúdo dentro do elemento',
+          '.innerHTML += "..." acumula — adiciona sem apagar o que tinha',
+          'O id no HTML é a "porta" que o JS usa para entrar',
+        ],
+        code: `<!-- HTML -->
+<section id="resultado">
+  <p>Aqui vai aparecer o resultado...</p>
+</section>
+
+// scripts.js
+function inicio() {
+  let nome = prompt("Qual é o seu nome?")
+
+  let res = document.getElementById("resultado")
+  res.innerHTML = "<p>Olá, <strong>" + nome + "</strong>!</p>"
+}`,
+        codeLanguage: 'html',
+      },
+    },
+    {
+      id: 11,
+      layout: 'checklist',
+      title: 'Tarefas em Aula',
+      content: {
+        heading: 'Coloque em prática agora!',
+        items: [
+          'Tarefa 1: criar index.html e exibir window.alert("Olá, Mundo!") com <script> inline',
+          'Tarefa 2: criar scripts.js, adicionar console.log e linkar com <script src="scripts.js">',
+          'Tarefa 2: abrir DevTools (F12) → Console e confirmar a mensagem impressa',
+          'Tarefa 3: criar botão com onclick e função que usa prompt() + alert()',
+          'Tarefa 4: adicionar <section id="resultado"> e atualizar innerHTML com o nome digitado',
+          'Extra: usar console.log() dentro das funções para ver os valores em tempo real',
+        ],
+      },
+    },
+  ],
+}
+
 const jsVariaveisModule: Module = {
   id: 'dia-2/javascript-variaveis',
   day: 2,
@@ -745,27 +1056,24 @@ const jsVariaveisModule: Module = {
   tags: ['JavaScript', 'Variáveis', 'Tipos'],
   icon: 'FaJs',
   topics: [
-    'O que é JavaScript e onde roda (browser + Node.js)',
     'var — escopo de função e hoisting (evitar em código moderno)',
     'let — escopo de bloco, reatribuível',
     'const — escopo de bloco, não reatribuível (use como padrão)',
     'Tipos primitivos: String, Number, Boolean, null, undefined',
     'Arrays: [1, 2, 3] e métodos push, pop, length, indexOf',
     'Objetos: { chave: valor } e acesso por ponto ou colchete',
-    'Interagindo com o usuário: alert, prompt e confirm',
     'typeof e conversão implícita vs explícita',
   ],
   exercises: [
     {
-      label: 'Exercícios no Console do Browser',
+      label: 'Desafio — Ficha de Jogador (RPG)',
+      description: 'Você foi contratado para criar a estrutura inicial de um jogo de RPG no navegador. Armazene as informações básicas do herói antes da partida começar.',
       steps: [
-        'Abra o browser, pressione <code>F12</code> e clique em "Console"',
-        'Declare: <code>const nome = "Seu Nome"</code> e exiba com <code>console.log(nome)</code>',
-        'Declare: <code>let idade = 25</code>, mude para 26 com <code>idade = 26</code>',
-        'Crie: <code>const frutas = ["maçã", "banana", "uva"]</code> e adicione uma 4ª com <code>frutas.push("manga")</code>',
-        'Crie: <code>const aluno = { nome: "Ana", idade: 20, curso: "Dev" }</code>',
-        'Acesse propriedades: <code>console.log(aluno.nome)</code> e <code>console.log(aluno["curso"])</code>',
-        'Verifique tipos: <code>typeof nome</code>, <code>typeof idade</code>, <code>typeof frutas</code>',
+        'Crie um objeto <code>heroi</code> usando <code>const</code>',
+        'Dentro do objeto adicione: <strong>nome</strong> (String), <strong>nivel</strong> (Number, valor 1), <strong>hp</strong> (Number, valor 100), <strong>inventario</strong> (Array com 3 itens), <strong>estaVivo</strong> (Boolean, <code>true</code>)',
+        'O herói encontrou um baú! Use <code>.push()</code> para adicionar <code>"anel magico"</code> no <strong>inventario</strong>',
+        'Exiba no console usando template literal: <code>`O heroi [nome] esta nivel [nivel] e possui [quantidade] itens no inventario!`</code>',
+        'Dica: use <code>.length</code> para descobrir a quantidade de itens',
       ],
     },
   ],
@@ -936,37 +1244,6 @@ console.log(nome, curso)  // "Carlos" "Desenvolvimento Web"`,
     },
     {
       id: 7,
-      layout: 'two-column',
-      title: 'Interagindo com o Usuário',
-      content: {
-        heading: 'alert, prompt e confirm — janelas do navegador',
-        text: [
-          'alert() mostra uma mensagem em uma caixinha',
-          'prompt() pergunta algo e devolve o texto digitado (sempre String!)',
-          'confirm() faz uma pergunta de sim/não e devolve true ou false',
-          'console.log() escreve no Console (F12) — ideal para depurar',
-        ],
-        code: `// Mostrar uma mensagem
-alert("Bem-vindo ao curso!")
-
-// Perguntar e guardar a resposta (vem como texto)
-const nome = prompt("Qual é o seu nome?")
-alert("Olá, " + nome + "!")
-
-// prompt sempre retorna String — converta se precisar
-const idade = Number(prompt("Sua idade?"))
-console.log(idade + 1) // idade no próximo ano
-
-// Confirmar uma ação (true / false)
-const certeza = confirm("Deseja continuar?")
-if (certeza) {
-  alert("Vamos lá!")
-}`,
-        codeLanguage: 'javascript',
-      },
-    },
-    {
-      id: 8,
       layout: 'checklist',
       title: 'Missão Variáveis — Console do Browser',
       content: {
@@ -979,7 +1256,6 @@ if (certeza) {
           'Criar objeto aluno com nome, idade e curso',
           'Acessar propriedades do objeto com ponto e com colchete',
           'Usar typeof para verificar o tipo de cada variável criada',
-          'Usar prompt para pedir o nome e alert para dar boas-vindas',
         ],
       },
     },
@@ -1004,14 +1280,15 @@ const jsCondicionaisModule: Module = {
   ],
   exercises: [
     {
-      label: 'Desafios de Lógica de Decisão',
+      label: 'Desafio — Sistema de Validação de Evento Tech',
+      description: 'Um site precisa validar se um usuário pode entrar na área VIP de um evento de tecnologia. O sistema de regras é rigoroso.',
       steps: [
-        'Abra o Console do browser (F12)',
-        'Escreva um <code>if/else</code> que verifica se a variável <code>numero = 7</code> é positivo, negativo ou zero',
-        'Use operadores lógicos: verifique se <code>x = 15</code> está entre 10 e 20 (<code>x > 10 && x < 20</code>)',
-        'Converta o exercício 1 para operador ternário em uma linha',
-        'Crie um <code>switch</code> que receba um número de 1 a 7 e retorne o nome do dia da semana',
-        'Bônus: escreva uma função que recebe uma nota (0–10) e retorna "Aprovado", "Recuperação" ou "Reprovado"',
+        'Crie as variáveis com <code>let</code>: <code>idade = 17</code>, <code>possuiConvite = true</code>, <code>estaAcompanhadoResponsavel = true</code>',
+        '<strong>Regra 1:</strong> se tiver 18+ anos <strong>E</strong> possuir convite → exibir <code>"Acesso VIP Liberado!"</code>',
+        '<strong>Regra 2:</strong> se for menor de 18, mas tiver convite <strong>E</strong> acompanhante responsável → exibir <code>"Acesso Liberado com Acompanhante!"</code>',
+        '<strong>Regra 3:</strong> se tiver convite mas não cumprir as regras anteriores → exibir <code>"Acesso Negado: Necessário acompanhante maior de idade."</code>',
+        '<strong>Regra 4:</strong> se não tiver convite → exibir <code>"Acesso Negado: Convite inválido ou ausente."</code>',
+        'Altere os valores das variáveis para simular diferentes clientes e veja o resultado no console!',
       ],
     },
   ],
@@ -1189,15 +1466,16 @@ const jsLoopsModule: Module = {
   ],
   exercises: [
     {
-      label: 'Desafios de Repetição',
+      label: 'Desafio — Detector de Fraude no Carrinho de Compras',
+      description: 'Em um e-commerce, o sistema precisa somar os valores das compras do cliente e identificar itens com valor suspeito ou zerado.',
       steps: [
-        'Abra o Console do browser (F12)',
-        'Use <code>for</code> para imprimir os números de 1 a 10',
-        'Use <code>while</code> para contar regressivamente de 5 até 1',
-        'Use <code>for...of</code> para percorrer um array de nomes e exibir cada um',
-        'Use <code>forEach</code> para calcular a soma de <code>[10, 20, 30, 40]</code>',
-        'Use <code>for</code> com <code>break</code> para encontrar o primeiro número par maior que 7 no array <code>[1, 3, 5, 8, 11]</code>',
-        'Bônus: use <code>for...in</code> para listar todas as chaves de um objeto <code>aluno</code>',
+        'Crie o array de preços: <code>const precos = [15, 30, 0, 45, 120, 200]</code>',
+        'Crie a variável acumuladora: <code>let total = 0</code> (lembre-se: <code>const</code> não pode ser reatribuída, use <code>let</code>)',
+        'Use um loop <code>for...of</code> para percorrer a lista de <code>precos</code>',
+        'Dentro do loop: se o preço for <code>=== 0</code>, exibir <code>"Aviso: item gratuito ou com erro"</code> e usar <code>continue</code> para não somar',
+        'Dentro do loop: se o preço for <code>&gt; 100</code>, exibir <code>`Item de alto valor encontrado: R$ [preco]`</code>',
+        'Para todos os itens válidos, some o valor com <code>total += preco</code>',
+        'Fora do loop, exiba: <code>`O valor total da compra é: R$ [total]`</code>',
       ],
     },
   ],
@@ -1800,6 +2078,7 @@ export const MODULES: Module[] = [
   htmlModule,
   cssModule,
   terminalModule,
+  jsIntroModule,
   jsVariaveisModule,
   jsCondicionaisModule,
   jsLoopsModule,

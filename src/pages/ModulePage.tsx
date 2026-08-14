@@ -121,14 +121,14 @@ export default function ModulePage() {
                 )}
 
                 {ex.steps && (
-                  <ol className="flex flex-col gap-3">
+                  <ol className="flex flex-col gap-4">
                     {ex.steps.map((step, si) => (
                       <li key={si} className="flex gap-3 items-start">
-                        <span className="w-7 h-7 rounded-full bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 dark:bg-indigo-400/15 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                        <span className="w-7 h-7 rounded-full bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 dark:bg-indigo-400/15 text-xs font-bold flex items-center justify-center shrink-0 mt-0">
                           {si + 1}
                         </span>
                         <span
-                          className="text-text-primary text-sm leading-relaxed"
+                          className="text-text-primary text-base leading-relaxed"
                           dangerouslySetInnerHTML={{ __html: step }}
                         />
                       </li>

@@ -57,4 +57,20 @@
   ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-indigo);
   }
+
+  /* inline code in exercise steps — excludes syntax highlighter blocks */
+  :not(pre) > code {
+    font-family: 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+    background-color: var(--bg-card-alt);
+    color: var(--accent-indigo);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  :root.dark :not(pre) > code {
+    color: #a5b4fc;
+  }
 }

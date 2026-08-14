@@ -10,7 +10,7 @@ export interface TwoColumnContent {
   text: string[]
   code?: string
   codeLanguage?: string
-  image?: { src: string; alt: string }
+  image?: { src: string; alt: string; srcLight?: string }
 }
 
 export interface CardsContent {

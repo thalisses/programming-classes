@@ -5,6 +5,7 @@ import css from 'react-syntax-highlighter/dist/esm/languages/hljs/css'
 import bash from 'react-syntax-highlighter/dist/esm/languages/hljs/bash'
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import type { TwoColumnContent } from '../../../types'
+import { useTheme } from '../../../hooks/useTheme'
 
 SyntaxHighlighter.registerLanguage('javascript', js)
 SyntaxHighlighter.registerLanguage('html', html)
@@ -17,6 +18,10 @@ interface TwoColumnSlideProps {
 }
 
 export default function TwoColumnSlide({ title, content }: TwoColumnSlideProps) {
+  const { theme } = useTheme()
+  const imgSrc = content.image?.srcLight && theme === 'light'
+    ? content.image.srcLight
+    : content.image?.src
   return (
     <div className="w-full h-full flex flex-col bg-bg-base p-8 gap-5">
       <div>
@@ -29,7 +34,7 @@ export default function TwoColumnSlide({ title, content }: TwoColumnSlideProps) 
         <div className="flex flex-col justify-center gap-4">
           {content.text.map((line, i) => (
             <div key={i} className="flex gap-3 items-start">
-              <span className="mt-2 w-2.5 h-2.5 rounded-full bg-accent-indigo shrink-0" />
+              <span className="mt-[17px] w-2.5 h-2.5 rounded-full bg-accent-indigo shrink-0" />
               <p className="text-text-primary text-[24px] leading-relaxed">{line}</p>
             </div>
           ))}
@@ -39,8 +44,8 @@ export default function TwoColumnSlide({ title, content }: TwoColumnSlideProps) 
         {content.image ? (
           <div className="flex items-center justify-center rounded-xl bg-bg-card border border-bg-card-alt p-6 min-h-0 h-full">
             <img
-              src={content.image.src}
-              alt={content.image.alt}
+              src={imgSrc}
+              alt={content.image!.alt}
               className="max-h-full max-w-full object-contain"
             />
           </div>
