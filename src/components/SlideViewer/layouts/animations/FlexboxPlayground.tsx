@@ -142,8 +142,8 @@ export default function FlexboxPlayground() {
           ))}
         </div>
 
-        <pre className="rounded-xl bg-slate-800 border border-slate-700 p-5 font-code text-[26px] text-text-primary leading-relaxed">
-          <span className="text-cyan-300">.container</span> {'{'}
+        <pre className="rounded-xl bg-bg-card border border-bg-card-alt p-5 font-code text-[24px] text-text-primary leading-relaxed">
+          <span className="text-cyan-700">.container</span> {'{'}
           {'\n'}  display: <span className="text-accent-emerald">flex</span>;
           {'\n'}  flex-direction: <span className="text-accent-emerald">{direction}</span>;
           {'\n'}  justify-content: <span className="text-accent-emerald">{justify}</span>;

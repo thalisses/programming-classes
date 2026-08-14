@@ -8,19 +8,19 @@ export default function LoopCounter() {
     <div className="w-full h-full flex items-center justify-center">
       <div className="flex flex-col items-center gap-8">
         {/* Code snippet */}
-        <div className="bg-slate-800 rounded-xl px-8 py-5 font-code text-[26px] leading-loose border border-slate-700 min-w-[420px]">
-          <span className="text-yellow-300">for</span>
-          <span className="text-white"> (</span>
-          <span className="text-cyan-300">let</span>
-          <span className="text-white"> i = 0; </span>
+        <div className="bg-bg-card rounded-xl px-8 py-5 font-code text-[24px] leading-loose border border-bg-card-alt min-w-[420px]">
+          <span className="text-amber-600">for</span>
+          <span className="text-text-primary"> (</span>
+          <span className="text-cyan-700">let</span>
+          <span className="text-text-primary"> i = 0; </span>
           <span className="lc-counter text-accent-emerald font-bold">i &lt; {TOTAL}</span>
-          <span className="text-white">; i++) {'{'}</span>
+          <span className="text-text-primary">; i++) {'{'}</span>
           <br />
-          <span className="text-white pl-8">array.</span>
-          <span className="text-yellow-200">push</span>
-          <span className="text-white">(i)</span>
+          <span className="text-text-primary pl-8">array.</span>
+          <span className="text-amber-600">push</span>
+          <span className="text-text-primary">(i)</span>
           <br />
-          <span className="text-white">{'}'}</span>
+          <span className="text-text-primary">{'}'}</span>
         </div>
 
         {/* Counter display */}

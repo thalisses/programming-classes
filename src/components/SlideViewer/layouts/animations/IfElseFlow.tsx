@@ -6,15 +6,15 @@ export default function IfElseFlow() {
       <div className="w-full max-w-[1200px] flex items-center justify-between gap-10 xl:gap-16">
         {/* Left: code snippet */}
         <div className="flex-1 flex justify-center">
-          <div className="w-full max-w-[620px] bg-slate-800 rounded-xl p-5 font-code text-[22px] leading-[1.8] border border-slate-700 shadow-sm">
-            <div className="ife-line ife-line--1 text-slate-500">// nota = 7.5</div>
-            <div className="ife-line ife-line--2 text-yellow-300">if (nota &gt;= 9) {'{'}</div>
-            <div className="ife-line ife-line--3 text-slate-400 pl-4">&quot;Nota A&quot;</div>
-            <div className="ife-line ife-line--4 text-yellow-300">{'}'} else if (nota &gt;= 7) {'{'}</div>
+          <div className="w-full max-w-[620px] bg-bg-card rounded-xl p-5 font-code text-[24px] leading-[1.8] border border-bg-card-alt shadow-sm">
+            <div className="ife-line ife-line--1 text-text-muted">// nota = 7.5</div>
+            <div className="ife-line ife-line--2 text-amber-600">if (nota &gt;= 9) {'{'}</div>
+            <div className="ife-line ife-line--3 text-text-muted pl-4">&quot;Nota A&quot;</div>
+            <div className="ife-line ife-line--4 text-amber-600">{'}'} else if (nota &gt;= 7) {'{'}</div>
             <div className="ife-line ife-line--5 text-accent-emerald pl-4 font-bold">→ &quot;Nota B&quot; ✓</div>
-            <div className="ife-line ife-line--6 text-yellow-300">{'}'} else {'{'}</div>
-            <div className="ife-line ife-line--7 text-slate-400 pl-4">&quot;Reprovado&quot;</div>
-            <div className="ife-line ife-line--8 text-yellow-300">{'}'}</div>
+            <div className="ife-line ife-line--6 text-amber-600">{'}'} else {'{'}</div>
+            <div className="ife-line ife-line--7 text-text-muted pl-4">&quot;Reprovado&quot;</div>
+            <div className="ife-line ife-line--8 text-amber-600">{'}'}</div>
           </div>
         </div>
 

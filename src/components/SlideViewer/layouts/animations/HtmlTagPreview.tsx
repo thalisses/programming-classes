@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
 import html from 'react-syntax-highlighter/dist/esm/languages/hljs/xml'
-import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { atomOneDark, atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { useTheme } from '../../../../hooks/useTheme'
 import './HtmlTagPreview.css'
 
 SyntaxHighlighter.registerLanguage('html', html)
@@ -113,7 +114,9 @@ const EXAMPLES: { id: string; label: string; code: string }[] = [
 
 export default function HtmlTagPreview() {
   const [selected, setSelected] = useState(0)
+  const { theme } = useTheme()
   const example = EXAMPLES[selected]
+  const codeTheme = theme === 'light' ? atomOneLight : atomOneDark
 
   return (
     <div className="w-full h-full flex flex-col gap-3">
@@ -143,15 +146,18 @@ export default function HtmlTagPreview() {
         <div className="rounded-xl overflow-hidden min-h-0 h-full">
           <SyntaxHighlighter
             language="html"
-            style={atomOneDark}
+            style={codeTheme}
             customStyle={{
               height: '100%',
               minHeight: '100%',
               margin: 0,
               borderRadius: '12px',
-              fontSize: '27px',
+              fontSize: '24px',
               lineHeight: '1.8',
               padding: '26px',
+              background: theme === 'light' ? '#f8fafc' : '#0f172a',
+              border: `1px solid ${theme === 'light' ? '#cbd5e1' : '#334155'}`,
+              color: theme === 'light' ? '#0f172a' : '#f1f5f9',
             }}
           >
             {example.code}

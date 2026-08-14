@@ -9,7 +9,7 @@ export interface TwoColumnContent {
   heading: string
   text: string[]
   code?: string
-  codeLanguage?: string
+  codeLanguage?: string | string[]
   image?: { src: string; alt: string; srcLight?: string }
 }
 
