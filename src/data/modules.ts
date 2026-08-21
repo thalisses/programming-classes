@@ -1809,10 +1809,10 @@ const codespacesModule: Module = {
   exercises: [
     {
       label: 'Criar sua página pessoal com IA',
-      url: 'https://github.com/template-curso',
-      description: 'Acesse o repositório template, abra um Codespace e use o Copilot para gerar sua página.',
+      url: 'https://github.com/thalisses/meu-primeiro-site',
+      description: 'Acesse o repositório, abra um Codespace e use o Copilot para gerar sua página.',
       steps: [
-        'Acesse o repositório template (link acima) e clique em "Use this template"',
+        'Acesse o repositório do projeto (link acima) e clique em "fork"',
         'Clique no botão verde "Code" → aba "Codespaces" → "Create codespace"',
         'Aguarde o Codespace iniciar (leva ~30 segundos)',
         'No terminal integrado (Ctrl+`), você já está no ambiente configurado',
